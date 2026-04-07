@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MeshView: View {
-    @Binding var color: Color
+    let color: Color
+
     var body: some View {
         if #available(iOS 18.0, macOS 15.0, visionOS 2.0, tvOS 18.0, *) {
             MeshGradient(width: 3, height: 3, points: [
@@ -21,9 +22,6 @@ struct MeshView: View {
                 color.opacity(0.5), color.opacity(0.6), color.opacity(0.7)
             ])
             .ignoresSafeArea(.all)
-            .overlay(
-                NoiseView(size: 100000)
-            )
         } else {
             // Fallback on earlier versions
             LinearGradient(colors: [Color.accentColor.opacity(0.5), Color(.clear)], startPoint: .topLeading, endPoint: .bottomTrailing)

@@ -6,12 +6,6 @@
 //
 
 import SwiftUI
-import SwiftVB
-import SwiftGlass
-
-#if os(iOS)
-import Drops
-#endif
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
@@ -21,30 +15,21 @@ extension SwiftNEW {
                 sheetContent
             } else {
                 Button(action: {
-                    #if os(iOS)
-                    if showDrop {
-                        drop()
-                    } else {
-                        show = true
-                    }
-                    #else
-                    show = true
-                    #endif
+                    isPresented = true
                 }) {
-                    Label(String(localized: String.LocalizationValue(label), bundle: .module), systemImage: labelImage)
+                    Label(strings.triggerButtonLabel, systemImage: labelImage)
                         .frame(
-                            width: size == "mini" ? nil : (size == "invisible" ? 0 : platformWidth),
-                            height: size == "mini" ? nil : (size == "invisible" ? 0 : 50)
+                            width: triggerStyle == .mini ? nil : (triggerStyle == .hidden ? 0 : platformWidth),
+                            height: triggerStyle == .mini ? nil : (triggerStyle == .hidden ? 0 : 50)
                         )
                         #if os(iOS) && !os(visionOS)
                         .foregroundColor(color.adaptedTextColor)
-                        .background(size != "mini" && size != "invisible" ? color : Color.clear)
+                        .background(triggerStyle == .regular ? color : Color.clear)
                         .cornerRadius(15)
                         #endif
                 }
-                .opacity(size == "invisible" ? 0 : 1)
-                .modifier(ConditionalGlassModifier(isEnabled: glass, shadowColor: color))
-                .modifier(PresentationModifier(isPresented: $show, presentation: presentation, sheetContent: sheetContent))
+                .opacity(triggerStyle == .hidden ? 0 : 1)
+                .modifier(PresentationModifier(isPresented: $isPresented, presentation: presentation, sheetContent: sheetContent))
             }
         }
     }
@@ -59,59 +44,55 @@ extension SwiftNEW {
     
     private var sheetContent: some View {
         ZStack {
-            if mesh {
-                MeshView(color: $color)
-            }
-            if specialEffect == .christmas {
-                SnowfallView()
-            }
+            backgroundLayer
             sheetCurrent
                 .sheet(isPresented: $historySheet) {
-                    historySheetContent
+                    if canShowHistory {
+                        historySheetContent
+                    }
                 }
                 #if os(visionOS)
                 .padding()
                 #endif
         }
-        .background(.ultraThinMaterial)
-        .modifier(PresentationBackgroundModifier())
+        .modifier(PresentationBackgroundModifier(background: background))
     }
     
     private var historySheetContent: some View {
         ZStack {
-            if mesh {
-                MeshView(color: $color)
-            }
-            if specialEffect == .christmas {
-                SnowfallView()
-            }
+            backgroundLayer
             sheetHistory
                 #if os(visionOS)
                 .padding()
                 #endif
         }
-        .background(.ultraThinMaterial)
-        .modifier(PresentationBackgroundModifier())
+        .modifier(PresentationBackgroundModifier(background: background))
     }
-}
 
-private struct PresentationBackgroundModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        if #available(iOS 16.4, tvOS 16.4, *) {
-            content.presentationBackground(.thinMaterial)
-        } else {
-            content
+    @ViewBuilder
+    private var backgroundLayer: some View {
+        switch background.storage {
+        case let .solidColor(color):
+            color.ignoresSafeArea()
+        case let .view(view):
+            view.ignoresSafeArea()
+        case .mesh:
+            MeshView(color: color)
         }
     }
 }
 
-private struct ConditionalGlassModifier: ViewModifier {
-    let isEnabled: Bool
-    let shadowColor: Color
-    
+private struct PresentationBackgroundModifier: ViewModifier {
+    let background: SwiftNEWBackground
+
     func body(content: Content) -> some View {
-        if isEnabled {
-            content.glass(shadowColor: shadowColor)
+        if #available(iOS 16.4, tvOS 16.4, *) {
+            switch background.storage {
+            case let .solidColor(color):
+                content.presentationBackground(color)
+            case .view, .mesh:
+                content.presentationBackground(.clear)
+            }
         } else {
             content
         }

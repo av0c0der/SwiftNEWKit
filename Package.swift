@@ -8,7 +8,6 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftNEW",
-    defaultLocalization: "en",
     platforms: [
         .iOS(.v15),
         .macOS(.v14),
@@ -21,20 +20,13 @@ let package = Package(
             targets: ["SwiftNEW"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/1998code/SwiftVBKit.git", .upToNextMinor(from: "1.4.0")),
-        .package(url: "https://github.com/omaralbeik/Drops.git", .upToNextMinor(from: "1.7.0")),
-        .package(url: "https://github.com/1998code/SwiftGlass.git", .upToNextMinor(from: "26.0.1"))
+        
     ],
     targets: [
         .target(
             name: "SwiftNEW",
             dependencies: [
-                .product(name: "SwiftVB", package: "SwiftVBKit"),
-                .product(name: "Drops", package: "Drops"),
-                .product(name: "SwiftGlass", package: "SwiftGlass")
-            ],
-            resources: [
-                .process("Localizable.xcstrings")
+                
             ]
         )
     ]

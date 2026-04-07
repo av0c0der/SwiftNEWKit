@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import SwiftVB
-import SwiftGlass
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
@@ -15,21 +13,21 @@ extension SwiftNEW {
     #if os(iOS)
     public var headings: some View {
         HStack {
-            if align == .leading {
+            if contentAlignment == .leading {
                 AppIconView()
                     .padding(.leading, -8)
                     .padding(.trailing, 8)
             }
-            VStack(alignment: align) {
-                if align == .center {
+            VStack(alignment: horizontalAlignment) {
+                if contentAlignment == .center {
                     AppIconView()
                 }
-                Text(String(localized: "What's New in", bundle: .module))
+                Text(strings.whatsNewIn)
                     .bold().font(.largeTitle)
-                Text("\(String(localized: "Version", bundle: .module)) \(Bundle.versionBuild)")
+                Text("\(strings.version) \(Bundle.versionBuild)")
                     .bold().font(.title).foregroundColor(.secondary)
             }
-            if align == .trailing {
+            if contentAlignment == .trailing {
                 AppIconView()
             }
         }
@@ -37,9 +35,9 @@ extension SwiftNEW {
     #elseif os(macOS) || os(visionOS) || os(tvOS)
     public var headings: some View {
         VStack {
-            Text(String(localized: "What's New in", bundle: .module))
+            Text(strings.whatsNewIn)
                 .bold().font(.largeTitle)
-            Text("\(String(localized: "Version", bundle: .module)) \(Bundle.versionBuild)")
+            Text("\(strings.version) \(Bundle.versionBuild)")
                 .bold().font(.title).foregroundColor(.secondary)
         }
     }

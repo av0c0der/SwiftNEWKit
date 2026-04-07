@@ -8,10 +8,113 @@
 import SwiftUI
 import SwiftNEW
 
+private let demoCurrentItems = [
+    ReleaseNotes(
+        version: "6.2",
+        notes: [
+            ReleaseNote(
+                icon: "sparkles",
+                iconBackground: "#007AFF",
+                title: "Fresh Design",
+                subtitle: "Updated visuals",
+                body: "The release notes screen now uses injected content instead of loading JSON internally."
+            ),
+            ReleaseNote(
+                icon: "slider.horizontal.3",
+                iconBackground: "#34C759",
+                title: "Simpler API",
+                body: "Customize copy with SwiftNEWStrings and pass release items directly in the initializer."
+            )
+        ]
+    ),
+    ReleaseNotes(
+        version: "6.1",
+        subtitle: "Missed release",
+        notes: [
+            ReleaseNote(
+                icon: "tray.full",
+                iconBackground: "#FF9500",
+                title: "Better Presentation",
+                subtitle: "Current items are supplied directly",
+                body: "The current release screen can now render multiple missed release sections in order."
+            ),
+            ReleaseNote(
+                icon: "paintbrush.pointed",
+                iconBackground: "#AF52DE",
+                title: "Background Cleanup",
+                body: "Background configuration is now explicit and simpler to reason about."
+            )
+        ]
+    )
+]
+
+private let demoHistoryItems = [
+    ReleaseNotes(
+        version: "6.2",
+        notes: [
+            ReleaseNote(
+                icon: "sparkles",
+                iconBackground: "#007AFF",
+                title: "Fresh Design",
+                subtitle: "Updated visuals",
+                body: "The release notes screen now uses injected content instead of loading JSON internally."
+            ),
+            ReleaseNote(
+                icon: "slider.horizontal.3",
+                iconBackground: "#34C759",
+                title: "Simpler API",
+                body: "Customize copy with SwiftNEWStrings and pass release items directly in the initializer."
+            )
+        ]
+    ),
+    ReleaseNotes(
+        version: "6.1",
+        subtitle: "Previous release",
+        notes: [
+            ReleaseNote(
+                icon: "wand.and.stars",
+                iconBackground: "#AF52DE",
+                title: "Previous Release",
+                body: "History items are now supplied separately from current release items."
+            )
+        ]
+    ),
+    ReleaseNotes(
+        version: "6.0",
+        subtitle: "Refactor",
+        notes: [
+            ReleaseNote(
+                icon: "rectangle.3.group",
+                iconBackground: "#FF9500",
+                title: "Shared Components",
+                body: "History and current release layouts now reuse the same underlying components."
+            )
+        ]
+    ),
+    ReleaseNotes(
+        version: "5.9",
+        subtitle: "Earlier",
+        notes: [
+            ReleaseNote(
+                icon: "text.bubble",
+                iconBackground: "#32ADE6",
+                title: "String Overrides",
+                body: "All visible copy can be configured through SwiftNEWStrings."
+            )
+        ]
+    )
+]
+
 struct ContentView : View {
-    @State var showNew: Bool = false
     var body: some View {
-        SwiftNEW(show: $showNew)
+        SwiftNEW(
+            background: .solidColor(Color(.systemBackground)),
+            currentItems: demoCurrentItems,
+            historyItems: demoHistoryItems,
+            onContinue: {
+                print("Continue tapped")
+            }
+        )
     }
 }
 
@@ -21,47 +124,23 @@ struct ContentView : View {
 
 // Mini (Toolbar / List only)
 #Preview("Mini") {
-    @Previewable @State var showNew: Bool = false
-    List {
-        Section(header: Text("Compatible with Toolbar / List")) {
-            SwiftNEW(show: $showNew, size: "mini", glass: false)
+        List {
+            Section(header: Text("Compatible with Toolbar / List")) {
+            SwiftNEW(triggerStyle: .mini, currentItems: demoCurrentItems, historyItems: demoHistoryItems)
+            }
         }
-    }
 }
 
 #Preview("Invisible") {
-    @Previewable @State var showNew: Bool = true
-    SwiftNEW(show: $showNew, size: "invisible")
-}
-
-// Remote (>3.0.0) - Firebase Real Time Database Demo / Any JSON URL
-#Preview("Remote") {
-    @Previewable @State var showNew: Bool = false
-    let lang = Bundle.main.preferredLocalizations.first ?? "en"
-    SwiftNEW(show: $showNew, labelImage: "icloud", data: "https://testground-a937f-default-rtdb.firebaseio.com/\(lang).json?print=pretty")
-}
-
-// Drop (>3.4.0) - Recommended trigger with Remote Notification
-#Preview("Drop") {
-    @Previewable @State var showNew: Bool = false
-    let lang = Bundle.main.preferredLocalizations.first ?? "en"
-    SwiftNEW(show: $showNew, label: "Notification", labelImage: "bell.badge", data: "https://testground-a937f-default-rtdb.firebaseio.com/\(lang).json?print=pretty", showDrop: true)
+    SwiftNEW(triggerStyle: .hidden, currentItems: demoCurrentItems, historyItems: demoHistoryItems)
 }
 
 // Full Screen Cover (>6.2.0) - Presentation option
 #Preview("Full Screen Cover") {
-    @Previewable @State var showNew: Bool = false
-    SwiftNEW(show: $showNew, presentation: .fullScreenCover)
+    SwiftNEW(currentItems: demoCurrentItems, historyItems: demoHistoryItems, presentation: .fullScreenCover)
 }
 
 // Embed (>6.2.0) - Render content directly
 #Preview("Embed") {
-    @Previewable @State var showNew: Bool = true
-    SwiftNEW(show: $showNew, presentation: .embed)
-}
-
-// Special Effect - Christmas snow effect
-#Preview("Christmas Effect") {
-    @Previewable @State var showNew: Bool = false
-    SwiftNEW(show: $showNew, specialEffect: .christmas)
+    SwiftNEW(currentItems: demoCurrentItems, historyItems: demoHistoryItems, presentation: .embed)
 }

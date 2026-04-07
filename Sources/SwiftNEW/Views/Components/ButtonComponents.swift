@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import SwiftVB
-import SwiftGlass
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
@@ -17,12 +15,12 @@ extension SwiftNEW {
             historySheet = true
         }) {
             HStack {
-                if align == .trailing {
+                if contentAlignment == .trailing {
                     Spacer()
                 }
-                Text(String(localized: "Show History", bundle: .module))
-                Image(systemName: "arrow.up.bin")
-                if align == .leading {
+                Text(strings.showHistoryButton)
+                Image(systemName: "clock.arrow.circlepath")
+                if contentAlignment == .leading {
                     Spacer()
                 }
             }.font(.caption)
@@ -32,19 +30,21 @@ extension SwiftNEW {
         .buttonBorderShape(.capsule)
         .tint(.secondary)
         #endif
-        .glass(color: .secondary, shadowColor: color)
     }
     
     public var closeCurrentButton: some View {
-        Button(action: { show = false }) {
+        Button(action: {
+            isPresented = false
+            onContinue?()
+        }) {
             HStack{
-                if align == .trailing {
+                if contentAlignment == .trailing {
                     Spacer()
                 }
-                Text(String(localized: "Continue", bundle: .module))
+                Text(strings.continueButton)
                     .bold()
                 Image(systemName: "arrow.right.circle.fill")
-                if align == .leading {
+                if contentAlignment == .leading {
                     Spacer()
                 }
             }.font(.body)
@@ -56,38 +56,36 @@ extension SwiftNEW {
             #endif
             #if os(iOS) && !os(visionOS)
             .foregroundColor(.white)
-            .background(color)
+            .background(Color.accentColor)
             .cornerRadius(15)
             #elseif os(tvOS)
-            .tint(.white)
+            .tint(.accentColor)
             #endif
-        }.glass(shadowColor: color)
+        }
     }
     
     public var closeHistoryButton: some View {
         Button(action: { historySheet = false }) {
             HStack{
-                if align == .trailing {
+                if contentAlignment == .trailing {
                     Spacer()
                 }
-                Text(String(localized: "Return", bundle: .module))
+                Text(strings.returnButton)
                     .bold()
                 Image(systemName: "arrow.down.circle.fill")
-                if align == .leading {
+                if contentAlignment == .leading {
                     Spacer()
                 }
             }.font(.body)
             .padding(.horizontal)
             #if os(iOS)
             .frame(width: 300, height: 50)
+            .foregroundColor(.white)
+            .background(Color.accentColor)
+            .cornerRadius(15)
             #elseif os(macOS)
             .frame(width: 300, height: 25)
             #endif
-            #if os(iOS)
-            .foregroundColor(.white)
-            .background(color)
-            .cornerRadius(15)
-            #endif
-        }.glass(shadowColor: color)
+        }
     }
 }
