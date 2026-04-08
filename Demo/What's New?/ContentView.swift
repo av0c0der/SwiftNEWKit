@@ -108,7 +108,6 @@ private let demoHistoryItems = [
 struct ContentView : View {
     var body: some View {
         SwiftNEW(
-            background: .solidColor(Color(.systemBackground)),
             currentItems: demoCurrentItems,
             historyItems: demoHistoryItems,
             onContinue: {

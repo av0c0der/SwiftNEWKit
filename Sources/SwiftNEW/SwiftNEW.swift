@@ -46,7 +46,7 @@ public struct SwiftNEW: View {
     public init(
         contentAlignment: SwiftNEWContentAlignment = .center,
         color: Color = .accentColor,
-        background: SwiftNEWBackground = .mesh,
+        background: SwiftNEWBackground = .solidColor(Color(.systemBackground)),
         triggerStyle: SwiftNEWTriggerStyle = .regular,
         currentItems: [ReleaseNotes] = [],
         historyItems: [ReleaseNotes] = [],
