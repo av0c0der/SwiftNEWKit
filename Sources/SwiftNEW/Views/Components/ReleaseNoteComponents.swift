@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+private enum ReleaseNotesLayoutMetrics {
+    static let cornerRadius: CGFloat = 15
+}
+
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View {
     let align: SwiftNEWContentAlignment
@@ -37,6 +41,7 @@ struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View 
             ScrollView(showsIndicators: false) {
                 content()
             }
+            .clipShape(RoundedRectangle(cornerRadius: ReleaseNotesLayoutMetrics.cornerRadius, style: .continuous))
             #if !os(tvOS)
             .frame(width: 300)
             #elseif !os(macOS)
@@ -81,12 +86,16 @@ struct ReleaseNoteRow: View {
             }
 
             VStack(alignment: textAlignment) {
-                Text(note.title).font(.headline)
+                Text(note.title)
+                    .font(.headline)
                 if let subtitle = note.subtitle {
-                    Text(subtitle).font(.subheadline).foregroundColor(.secondary)
+                    Text(subtitle)
+                        .font(.subheadline)
                 }
-                Text(note.body).font(.caption).foregroundColor(.secondary)
+                Text(note.body)
+                    .font(.caption)
             }
+            .foregroundColor(.secondary)
 
             if align == .trailing {
                 iconView
@@ -175,10 +184,10 @@ struct ReleaseNotesVersionBadge: View {
         .frame(maxWidth: .infinity, alignment: frameAlignment)
         .background(.regularMaterial)
         .overlay {
-            RoundedRectangle(cornerRadius: 15, style: .continuous)
+            RoundedRectangle(cornerRadius: ReleaseNotesLayoutMetrics.cornerRadius, style: .continuous)
                 .strokeBorder(.white.opacity(0.18))
         }
-        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: ReleaseNotesLayoutMetrics.cornerRadius, style: .continuous))
         .padding(.bottom)
     }
 }
