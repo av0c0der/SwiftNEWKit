@@ -14,7 +14,14 @@ extension SwiftNEW {
             Text(strings.historyTitle)
                 .bold().font(.largeTitle)
         } content: {
-            ReleaseNotesList(items: historyItems, align: contentAlignment, color: color, showsVersionBadges: true, hidesFirstVersionBadge: false)
+            ReleaseNotesList(
+                items: historyItems,
+                align: contentAlignment,
+                color: color,
+                showsVersionBadges: true,
+                hidesFirstVersionBadge: false,
+                dateFormat: dateFormat
+            )
         } footer: {
             closeHistoryButton
         }

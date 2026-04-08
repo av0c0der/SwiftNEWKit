@@ -40,6 +40,7 @@ public struct SwiftNEW: View {
     let labelImage: String
     let history: Bool
     let presentation: SwiftNEWPresentation
+    let dateFormat: Date.FormatStyle
     let onContinue: (() -> Void)?
 
     public init(
@@ -53,6 +54,7 @@ public struct SwiftNEW: View {
         labelImage: String = "arrow.up.circle.fill",
         history: Bool = true,
         presentation: SwiftNEWPresentation = .sheet,
+        dateFormat: Date.FormatStyle = .dateTime.year().month().day(),
         onContinue: (() -> Void)? = nil
     ) {
         _isPresented = State(initialValue: triggerStyle == .hidden)
@@ -66,6 +68,7 @@ public struct SwiftNEW: View {
         self.labelImage = labelImage
         self.history = history
         self.presentation = presentation
+        self.dateFormat = dateFormat
         self.onContinue = onContinue
     }
 

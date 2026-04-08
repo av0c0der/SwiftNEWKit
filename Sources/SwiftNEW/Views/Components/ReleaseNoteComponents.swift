@@ -116,25 +116,69 @@ struct ReleaseNoteRow: View {
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 struct ReleaseNotesVersionBadge: View {
     let version: String
+    let date: Date?
     let subtitle: String?
     let color: Color
+    let align: SwiftNEWContentAlignment
+    let dateFormat: Date.FormatStyle
+
+    private var horizontalAlignment: HorizontalAlignment {
+        switch align {
+        case .leading:
+            .leading
+        case .center:
+            .center
+        case .trailing:
+            .trailing
+        }
+    }
+
+    private var frameAlignment: Alignment {
+        switch align {
+        case .leading:
+            .leading
+        case .center:
+            .center
+        case .trailing:
+            .trailing
+        }
+    }
 
     var body: some View {
-        HStack(spacing: 4) {
-            Text(version)
-                .bold()
-                .font(.subheadline)
+        VStack(alignment: horizontalAlignment, spacing: 4) {
+            HStack(spacing: 8) {
+                Text(version)
+                    .bold()
+                    .font(.subheadline)
+                    .foregroundColor(color.adaptedTextColor)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 4)
+                    .background(color)
+                    .clipShape(Capsule())
+
+                if let date {
+                    Text(date, format: dateFormat)
+                        .font(.subheadline)
+                        .foregroundStyle(.primary)
+                }
+            }
+
             if let subtitle, !subtitle.isEmpty {
                 Text(subtitle)
-                    .font(.subheadline)
-                    .foregroundColor(color.adaptedTextColor.opacity(0.8))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(align == .trailing ? .trailing : (align == .center ? .center : .leading))
             }
         }
-        .foregroundColor(color.adaptedTextColor)
-        .padding(.horizontal, 12)
-        .frame(minHeight: 30)
-        .background(color.opacity(0.25))
-        .cornerRadius(15)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity, alignment: frameAlignment)
+        .background(.regularMaterial)
+        .overlay {
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .strokeBorder(.white.opacity(0.18))
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
         .padding(.bottom)
     }
 }
@@ -146,19 +190,54 @@ struct ReleaseNotesList: View {
     let color: Color
     let showsVersionBadges: Bool
     let hidesFirstVersionBadge: Bool
+    let dateFormat: Date.FormatStyle
+
+    private var horizontalAlignment: HorizontalAlignment {
+        switch align {
+        case .leading:
+            .leading
+        case .center:
+            .center
+        case .trailing:
+            .trailing
+        }
+    }
 
     private var shouldShowVersionBadges: Bool {
         showsVersionBadges && items.count > 1
     }
 
-    var body: some View {
-        ForEach(Array(items.enumerated()), id: \.element) { index, item in
-            if shouldShowVersionBadges && !(hidesFirstVersionBadge && index == 0) {
-                ReleaseNotesVersionBadge(version: item.version, subtitle: item.subtitle, color: color)
-            }
+    private func noteID(sectionIndex: Int, noteIndex: Int) -> String {
+        "\(sectionIndex)-\(noteIndex)"
+    }
 
-            ForEach(item.notes, id: \.self) { note in
-                ReleaseNoteRow(note: note, align: align, color: color)
+    private func indexedNotes(for item: ReleaseNotes, sectionIndex: Int) -> [(id: String, note: ReleaseNote)] {
+        item.notes.enumerated().map { noteIndex, note in
+            (id: noteID(sectionIndex: sectionIndex, noteIndex: noteIndex), note: note)
+        }
+    }
+
+    var body: some View {
+        LazyVStack(alignment: horizontalAlignment, spacing: 0, pinnedViews: [.sectionHeaders]) {
+            ForEach(items.indices, id: \.self) { index in
+                let item = items[index]
+
+                Section {
+                    ForEach(indexedNotes(for: item, sectionIndex: index), id: \.id) { entry in
+                        ReleaseNoteRow(note: entry.note, align: align, color: color)
+                    }
+                } header: {
+                    if shouldShowVersionBadges && !(hidesFirstVersionBadge && index == 0) {
+                        ReleaseNotesVersionBadge(
+                            version: item.version,
+                            date: item.date,
+                            subtitle: item.subtitle,
+                            color: color,
+                            align: align,
+                            dateFormat: dateFormat
+                        )
+                    }
+                }
             }
         }
     }

@@ -18,7 +18,8 @@ extension SwiftNEW {
                 align: contentAlignment,
                 color: color,
                 showsVersionBadges: true,
-                hidesFirstVersionBadge: true
+                hidesFirstVersionBadge: true,
+                dateFormat: dateFormat
             )
         } footer: {
             VStack {
