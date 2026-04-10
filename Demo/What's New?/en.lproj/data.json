@@ -1,266 +1,276 @@
-[
+{
+  "currentItems": [
     {
-        "version": "6.2",
-        "subVersion": "6.2.0",
-        "new": [
-            {
-                "icon": "rectangle.split.3x3",
-                "title": "Presentation",
-                "subtitle": "Options",
-                "body": "Support for sheet, fullScreenCover, and embed modes."
-            },
-            {
-                "icon": "paintpalette",
-                "title": "Adaptive",
-                "subtitle": "Text Color",
-                "body": "Button and history text color automatically adapts to background brightness."
-            },
-            {
-                "icon": "wand.and.stars",
-                "title": "Simplified",
-                "subtitle": "Initializer",
-                "body": "Direct values no longer require .constant wrapper binding."
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone! 🎉"
-            }
-        ]
+      "version": "3.4.0",
+      "date": "2026-03-31T00:00:00Z",
+      "subtitle": "Current release",
+      "notes": [
+        {
+          "icon": "sparkles",
+          "iconBackground": "#007AFF",
+          "title": "Richer timeline",
+          "subtitle": "Grouped history",
+          "body": "The demo now shows a changelog grouped into major-version sections instead of one flat stream of releases."
+        },
+        {
+          "icon": "slider.horizontal.3",
+          "iconBackground": "#34C759",
+          "title": "Sticky section headers",
+          "body": "As you scroll, the pinned header now reflects the active section title instead of the current version badge."
+        }
+      ]
     },
     {
-        "version": "6.1",
-        "subVersion": "6.1.0",
-        "new": [
-            {
-                "icon": "hammer",
-                "title": "Project",
-                "subtitle": "Restructure",
-                "body": "Seperate files and folders for better maintenance."
-            }
-        ]
+      "version": "3.3.1",
+      "date": "2026-02-27T00:00:00Z",
+      "subtitle": "Missed release",
+      "notes": [
+        {
+          "icon": "tray.full",
+          "iconBackground": "#FF9500",
+          "title": "Presentation polish",
+          "subtitle": "Missed versions stack cleanly",
+          "body": "Missed versions still appear inline in the current view while the history view is organized by major release."
+        },
+        {
+          "icon": "paintbrush.pointed",
+          "iconBackground": "#AF52DE",
+          "title": "Visual cleanup",
+          "body": "Spacing and layout remain readable even when the feed includes many versions."
+        }
+      ]
     },
     {
-        "version": "6.0",
-        "subVersion": "6.0.0",
-        "new": [
-            {
-                "icon": "wineglass",
-                "title": "Glass",
-                "subtitle": "Effect",
-                "body": "Available now!"
-            }
-        ]
-    },
-    {
-        "version": "5.5",
-        "subVersion": "5.5.0",
-        "new": [
-            {
-                "icon": "snowflake",
-                "title": "Snow",
-                "subtitle": "Effect",
-                "body": "More Special Animation Coming Soon!"
-            }
-        ]
-    },
-    {
-        "version": "5.4",
-        "subVersion": "5.4.0",
-        "new": [
-            {
-                "icon": "pencil.tip",
-                "title": "Matched",
-                "subtitle": "Mesh BG Color",
-                "body": "A standardized design."
-            }
-        ]
-    },
-    {
-        "version": "5.3",
-        "subVersion": "5.3.0",
-        "new": [
-            {
-                "icon": "pencil.tip",
-                "title": "Add",
-                "subtitle": "Mesh BG",
-                "body": "Better styles and design."
-            }
-        ]
-    },
-    {
-        "version": "5.2",
-        "subVersion": "5.2.0",
-        "new": [
-            {
-                "icon": "hammer",
-                "title": "Default",
-                "subtitle": "Option",
-                "body": "New optional binding for less code."
-            }
-        ]
-    },
-    {
-        "version": "5.1",
-        "subVersion": "5.1.0",
-        "new": [
-            {
-                "icon": "character.book.closed",
-                "title": "Update",
-                "subtitle": "Demo",
-                "body": "For 5.0 version."
-            }
-        ]
-    },
-    {
-        "version": "5.0",
-        "subVersion": "5.0.0",
-        "new": [
-            {
-                "icon": "character.book.closed",
-                "title": "Support",
-                "subtitle": "Localization",
-                "body": "Powered by Apple String Catalog."
-            },
-            {
-                "icon": "pip.remove",
-                "title": "Drop",
-                "subtitle": "Support",
-                "body": "For iOS14, watchOS7, and macOS11."
-            }
-        ]
-    },
-    {
-        "version": "4.2",
-        "subVersion": "4.2.0",
-        "new": [
-            {
-                "icon": "hammer",
-                "title": "Minor",
-                "subtitle": "Update",
-                "body": "Minor bug fixes, and UI improvement."
-            }
-        ]
-    },
-    {
-        "version": "4.1",
-        "subVersion": "4.1.0",
-        "new": [
-            {
-                "icon": "eye",
-                "title": "Support Vision Pro",
-                "subtitle": "& visionOS",
-                "body": "Drops Framework is temp-disabled due to conflict."
-            }
-        ]
-    },
-    {
-        "version": "4.0",
-        "subVersion": "4.0.0",
-        "new": [
-            {
-                "icon": "number",
-                "title": "Better Compatible",
-                "subtitle": "in Version & Build",
-                "body": "You can use x.y.z or x.y now."
-            }
-        ]
-    },
-    {
-        "version": "3.9",
-        "new": [
-            {
-                "icon": "app.fill",
-                "title": "App Icon",
-                "subtitle": "Supported",
-                "body": "on iOS."
-            },
-            {
-                "icon": "app",
-                "title": "Demo",
-                "subtitle": "is Better now",
-                "body": "Following the Package Version."
-            }
-        ]
-    },
-    {
-        "version": "1.5",
-        "new": [
-            {
-                "icon": "hammer",
-                "title": "Layout",
-                "subtitle": "Fixed",
-                "body": "on iOS Landscape."
-            }
-        ]
-    },
-    {
-        "version": "1.4",
-        "new": [
-            {
-                "icon": "hammer",
-                "title": "Crash",
-                "subtitle": "Fixed",
-                "body": "on macOS."
-            }
-        ]
-    },
-    {
-        "version": "1.3",
-        "new": [
-            {
-                "icon": "bell.badge",
-                "title": "Remote Drop",
-                "subtitle": "Supported",
-                "body": "Instead of full page sheet, you can use a small drop too!"
-            }
-        ]
-    },
-    {
-        "version": "1.2",
-        "new": [
-            {
-                "icon": "square.and.arrow.down.fill",
-                "title": "Remote File",
-                "subtitle": "Supported",
-                "body": "Direct load via remote storage. Easy!"
-            }
-        ]
-    },
-    {
-        "version": "1.1",
-        "new": [
-            {
-                "icon": "hammer.fill",
-                "title": "Bug fixes",
-                "subtitle": "Broken UI",
-                "body": "Available for iOS 16, iPadOS 16, macOS 13"
-            },
-            {
-                "icon": "square.and.arrow.down.fill",
-                "title": "Local File",
-                "subtitle": "Supported",
-                "body": "Direct load via local storage. Super fast!"
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! Created by Ming with ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone!"
-            }
-        ]
+      "version": "3.3.0",
+      "date": "2026-02-10T00:00:00Z",
+      "subtitle": "Missed release",
+      "notes": [
+        {
+          "icon": "square.stack.3d.up.fill",
+          "iconBackground": "#32ADE6",
+          "title": "Release grouping",
+          "body": "The demo history now groups related minor and patch releases under the same major header."
+        }
+      ]
     }
-]
+  ],
+  "historySections": [
+    {
+      "title": "3.0 Barcelona",
+      "items": [
+        {
+          "version": "3.4.0",
+          "date": "2026-03-31T00:00:00Z",
+          "subtitle": "Current release",
+          "notes": [
+            {
+              "icon": "sparkles",
+              "iconBackground": "#007AFF",
+              "title": "Richer timeline",
+              "subtitle": "Grouped history",
+              "body": "The demo now shows a changelog grouped into major-version sections instead of one flat stream of releases."
+            },
+            {
+              "icon": "slider.horizontal.3",
+              "iconBackground": "#34C759",
+              "title": "Sticky section headers",
+              "body": "As you scroll, the pinned header now reflects the active section title instead of the current version badge."
+            }
+          ]
+        },
+        {
+          "version": "3.3.1",
+          "date": "2026-02-27T00:00:00Z",
+          "subtitle": "Patch release",
+          "notes": [
+            {
+              "icon": "wand.and.stars",
+              "iconBackground": "#AF52DE",
+              "title": "Presentation polish",
+              "body": "Tuned spacing around inline version badges and section headers after grouping the sample history."
+            }
+          ]
+        },
+        {
+          "version": "3.3.0",
+          "date": "2026-02-10T00:00:00Z",
+          "subtitle": "Feature update",
+          "notes": [
+            {
+              "icon": "rectangle.3.group",
+              "iconBackground": "#FF9500",
+              "title": "Shared components",
+              "body": "History and current release layouts continue to reuse the same underlying components with fuller data."
+            }
+          ]
+        },
+        {
+          "version": "3.1.2",
+          "date": "2025-12-18T00:00:00Z",
+          "subtitle": "Patch release",
+          "notes": [
+            {
+              "icon": "text.bubble",
+              "iconBackground": "#32ADE6",
+              "title": "String overrides",
+              "body": "All visible copy can be configured through SwiftNEWStrings."
+            }
+          ]
+        },
+        {
+          "version": "3.0.0",
+          "date": "2025-11-07T00:00:00Z",
+          "subtitle": "Major update",
+          "notes": [
+            {
+              "icon": "shippingbox.fill",
+              "iconBackground": "#007AFF",
+              "title": "Injected data",
+              "body": "Release notes content is driven directly by supplied model data in the demo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2.0 Kyoto",
+      "items": [
+        {
+          "version": "2.4.1",
+          "date": "2025-09-28T00:00:00Z",
+          "subtitle": "Patch release",
+          "notes": [
+            {
+              "icon": "checkmark.circle.fill",
+              "iconBackground": "#34C759",
+              "title": "Stability fixes",
+              "body": "Resolved a few issues found while rendering long note bodies in the demo."
+            }
+          ]
+        },
+        {
+          "version": "2.4.0",
+          "date": "2025-09-11T00:00:00Z",
+          "subtitle": "Feature update",
+          "notes": [
+            {
+              "icon": "swatchpalette.fill",
+              "iconBackground": "#FF9500",
+              "title": "Color refresh",
+              "body": "Adjusted accent treatments to keep long histories easy to scan."
+            }
+          ]
+        },
+        {
+          "version": "2.2.0",
+          "date": "2025-07-02T00:00:00Z",
+          "subtitle": "Feature update",
+          "notes": [
+            {
+              "icon": "calendar.badge.clock",
+              "iconBackground": "#AF52DE",
+              "title": "Release cadence",
+              "body": "Added more minor releases so the demo better represents real changelog cadence."
+            }
+          ]
+        },
+        {
+          "version": "2.1.1",
+          "date": "2025-05-24T00:00:00Z",
+          "subtitle": "Patch release",
+          "notes": [
+            {
+              "icon": "ellipsis.bubble.fill",
+              "iconBackground": "#64D2FF",
+              "title": "Metadata polish",
+              "body": "Refined how subtitles and notes balance when some releases have only one item."
+            }
+          ]
+        },
+        {
+          "version": "2.0.0",
+          "date": "2025-04-10T00:00:00Z",
+          "subtitle": "Major update",
+          "notes": [
+            {
+              "icon": "macwindow.on.rectangle",
+              "iconBackground": "#5856D6",
+              "title": "Unified layout",
+              "body": "The demo adopted a shared layout system for current and historical release sections."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "1.0 Lisbon",
+      "items": [
+        {
+          "version": "1.4.0",
+          "date": "2025-02-03T00:00:00Z",
+          "subtitle": "Feature update",
+          "notes": [
+            {
+              "icon": "tray.full.fill",
+              "iconBackground": "#30D158",
+              "title": "History archive",
+              "body": "Introduced a clearer archive section for browsing older changes."
+            }
+          ]
+        },
+        {
+          "version": "1.3.2",
+          "date": "2024-12-19T00:00:00Z",
+          "subtitle": "Patch release",
+          "notes": [
+            {
+              "icon": "paintbrush.fill",
+              "iconBackground": "#BF5AF2",
+              "title": "Visual tuning",
+              "body": "Polished icon backgrounds and spacing in compact layouts."
+            }
+          ]
+        },
+        {
+          "version": "1.2.0",
+          "date": "2024-10-06T00:00:00Z",
+          "subtitle": "Feature update",
+          "notes": [
+            {
+              "icon": "list.bullet.rectangle.portrait.fill",
+              "iconBackground": "#FF9F0A",
+              "title": "Long-form support",
+              "body": "Improved the demo content so it can show a deeper stack of historical versions."
+            }
+          ]
+        },
+        {
+          "version": "1.1.1",
+          "date": "2024-08-28T00:00:00Z",
+          "subtitle": "Patch release",
+          "notes": [
+            {
+              "icon": "text.alignleft",
+              "iconBackground": "#66D4CF",
+              "title": "Copy cleanup",
+              "body": "Balanced note body lengths for more realistic sample content."
+            }
+          ]
+        },
+        {
+          "version": "1.0.0",
+          "date": "2024-07-14T00:00:00Z",
+          "subtitle": "Major update",
+          "notes": [
+            {
+              "icon": "square.grid.2x2.fill",
+              "iconBackground": "#0A84FF",
+              "title": "Component split",
+              "body": "The release notes view was broken into smaller reusable pieces for the demo app."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
