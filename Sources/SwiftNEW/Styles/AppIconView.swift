@@ -1,9 +1,3 @@
-//
-//  AppIconView.swift
-//  SwiftNEW
-//
-//  Created by Ming on 7/1/2025.
-//
 #if os(iOS)
 import SwiftUI
 
@@ -24,5 +18,11 @@ public struct AppIconView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 19, style: .continuous))
     }
+}
+
+@available(iOS 17.0, *)
+#Preview("App Icon") {
+    AppIconView()
+        .padding()
 }
 #endif

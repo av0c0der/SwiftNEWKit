@@ -1,10 +1,3 @@
-//
-//  MeshView.swift
-//  SwiftNEW
-//
-//  Created by Ming on 7/1/2025.
-//
-
 import SwiftUI
 
 struct MeshView: View {
@@ -28,4 +21,9 @@ struct MeshView: View {
                 .ignoresSafeArea(.all)
         }
     }
+}
+
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, *)
+#Preview("Mesh Background") {
+    MeshView(color: .indigo)
 }
