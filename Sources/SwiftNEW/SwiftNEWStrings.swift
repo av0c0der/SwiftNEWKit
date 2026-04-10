@@ -5,6 +5,7 @@ public struct SwiftNEWStrings: Hashable, Sendable {
     public var showHistoryButton: String
     public var continueButton: String
     public var returnButton: String
+    public var dismissHistoryButton: String
     public var whatsNewIn: String
     public var version: String
 
@@ -13,6 +14,7 @@ public struct SwiftNEWStrings: Hashable, Sendable {
         showHistoryButton: String = "Show History",
         continueButton: String = "Continue",
         returnButton: String = "Return",
+        dismissHistoryButton: String = "Done",
         whatsNewIn: String = "What's New in",
         version: String = "Version"
     ) {
@@ -20,6 +22,7 @@ public struct SwiftNEWStrings: Hashable, Sendable {
         self.showHistoryButton = showHistoryButton
         self.continueButton = continueButton
         self.returnButton = returnButton
+        self.dismissHistoryButton = dismissHistoryButton
         self.whatsNewIn = whatsNewIn
         self.version = version
     }
