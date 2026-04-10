@@ -9,6 +9,14 @@ struct ReleaseNoteRow: View {
         Color(hex: note.iconBackground ?? "") ?? color
     }
 
+    private var iconForeground: Color {
+        Color(hex: note.iconColor ?? "") ?? .white
+    }
+
+    private var iconBorder: Color {
+        Color(hex: note.borderColor ?? "") ?? .clear
+    }
+
     var body: some View {
         HStack {
             iconView
@@ -38,7 +46,7 @@ struct ReleaseNoteRow: View {
         ZStack {
             iconBackground
             Image(systemName: note.icon)
-                .foregroundColor(.white)
+                .foregroundColor(iconForeground)
         }
         #if !os(tvOS)
         .frame(width: 50, height: 50)
@@ -46,6 +54,10 @@ struct ReleaseNoteRow: View {
         .frame(width: 100, height: 100)
         #endif
         .cornerRadius(15)
+        .overlay(
+            RoundedRectangle(cornerRadius: 15)
+                .stroke(iconBorder, lineWidth: 1)
+        )
     }
 }
 
