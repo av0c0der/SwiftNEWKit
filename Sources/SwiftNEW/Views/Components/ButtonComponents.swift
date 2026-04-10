@@ -22,11 +22,9 @@ extension SwiftNEW {
         Button(action: {
             onContinue?()
         }) {
-            HStack{
-                Text(strings.continueButton)
-                    .bold()
-                Image(systemName: "arrow.forward.circle.fill")
-            }.font(.body)
+            Text(strings.continueButton)
+                .bold()
+                .font(.body)
             .padding(.horizontal)
             #if os(iOS)
             .frame(width: 300, height: 50)
@@ -45,11 +43,9 @@ extension SwiftNEW {
     
     public var closeHistoryButton: some View {
         Button(action: { historySheet = false }) {
-            HStack{
-                Text(strings.returnButton)
-                    .bold()
-                Image(systemName: "arrow.down.circle.fill")
-            }.font(.body)
+            Text(strings.returnButton)
+                .bold()
+                .font(.body)
             .padding(.horizontal)
             #if os(iOS)
             .frame(width: 300, height: 50)

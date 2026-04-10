@@ -80,11 +80,9 @@ public struct SwiftNEWHistory: View {
 
     private var dismissButton: some View {
         Button(action: { onDismiss?() }) {
-            HStack {
-                Text(strings.dismissHistoryButton)
-                    .bold()
-                Image(systemName: "xmark.circle.fill")
-            }.font(.body)
+            Text(strings.dismissHistoryButton)
+                .bold()
+                .font(.body)
             .padding(.horizontal)
             #if os(iOS)
             .frame(width: 300, height: 50)
