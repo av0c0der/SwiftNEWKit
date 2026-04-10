@@ -1,14 +1,6 @@
-//
-//  SwiftNEWStrings.swift
-//  SwiftNEW
-//
-//  Created by OpenCode on 4/7/2026.
-//
-
 import Foundation
 
 public struct SwiftNEWStrings: Hashable, Sendable {
-    public var triggerButtonLabel: String
     public var historyTitle: String
     public var showHistoryButton: String
     public var continueButton: String
@@ -17,7 +9,6 @@ public struct SwiftNEWStrings: Hashable, Sendable {
     public var version: String
 
     public init(
-        triggerButtonLabel: String = "Show Release Note",
         historyTitle: String = "History",
         showHistoryButton: String = "Show History",
         continueButton: String = "Continue",
@@ -25,7 +16,6 @@ public struct SwiftNEWStrings: Hashable, Sendable {
         whatsNewIn: String = "What's New in",
         version: String = "Version"
     ) {
-        self.triggerButtonLabel = triggerButtonLabel
         self.historyTitle = historyTitle
         self.showHistoryButton = showHistoryButton
         self.continueButton = continueButton

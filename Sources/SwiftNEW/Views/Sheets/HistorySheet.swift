@@ -1,22 +1,14 @@
-//
-//  HistorySheet.swift
-//  SwiftNEW
-//
-//  Created by Ming on 11/6/2022.
-//
-
 import SwiftUI
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
     public var sheetHistory: some View {
-        ReleaseNotesSheetLayout(align: contentAlignment) {
+        ReleaseNotesSheetLayout {
             Text(strings.historyTitle)
                 .bold().font(.largeTitle)
         } content: {
             ReleaseNotesList(
-                items: historyItems,
-                align: contentAlignment,
+                sections: historySections,
                 color: color,
                 showsVersionBadges: true,
                 hidesFirstVersionBadge: false,
@@ -26,4 +18,16 @@ extension SwiftNEW {
             closeHistoryButton
         }
     }
+}
+
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
+#Preview("History Sheet") {
+    SwiftNEW(
+        color: .indigo,
+        background: .mesh,
+        currentItems: SwiftNEWPreviewData.currentItems,
+        historySections: SwiftNEWPreviewData.historySections
+    )
+    .sheetHistory
+    .padding()
 }

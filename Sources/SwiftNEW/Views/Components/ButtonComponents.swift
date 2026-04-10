@@ -1,28 +1,14 @@
-//
-//  ButtonComponents.swift
-//  SwiftNEW
-//
-//  Created by Ming on 11/6/2022.
-//
-
 import SwiftUI
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
-    
     public var showHistoryButton: some View {
         Button(action: {
             historySheet = true
         }) {
             HStack {
-                if contentAlignment == .trailing {
-                    Spacer()
-                }
                 Text(strings.showHistoryButton)
                 Image(systemName: "clock.arrow.circlepath")
-                if contentAlignment == .leading {
-                    Spacer()
-                }
             }.font(.caption)
         }
         #if !os(visionOS)
@@ -34,19 +20,12 @@ extension SwiftNEW {
     
     public var closeCurrentButton: some View {
         Button(action: {
-            isPresented = false
             onContinue?()
         }) {
             HStack{
-                if contentAlignment == .trailing {
-                    Spacer()
-                }
                 Text(strings.continueButton)
                     .bold()
-                Image(systemName: "arrow.right.circle.fill")
-                if contentAlignment == .leading {
-                    Spacer()
-                }
+                Image(systemName: "arrow.forward.circle.fill")
             }.font(.body)
             .padding(.horizontal)
             #if os(iOS)
@@ -67,15 +46,9 @@ extension SwiftNEW {
     public var closeHistoryButton: some View {
         Button(action: { historySheet = false }) {
             HStack{
-                if contentAlignment == .trailing {
-                    Spacer()
-                }
                 Text(strings.returnButton)
                     .bold()
                 Image(systemName: "arrow.down.circle.fill")
-                if contentAlignment == .leading {
-                    Spacer()
-                }
             }.font(.body)
             .padding(.horizontal)
             #if os(iOS)
@@ -88,4 +61,31 @@ extension SwiftNEW {
             #endif
         }
     }
+}
+
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
+#Preview("Buttons") {
+    VStack(spacing: 20) {
+        SwiftNEW(
+            color: .indigo,
+            currentItems: SwiftNEWPreviewData.currentItems,
+            historySections: SwiftNEWPreviewData.historySections
+        )
+        .showHistoryButton
+
+        SwiftNEW(
+            color: .indigo,
+            currentItems: SwiftNEWPreviewData.currentItems,
+            historySections: []
+        )
+        .closeCurrentButton
+
+        SwiftNEW(
+            color: .indigo,
+            currentItems: SwiftNEWPreviewData.currentItems,
+            historySections: []
+        )
+        .closeHistoryButton
+    }
+    .padding()
 }

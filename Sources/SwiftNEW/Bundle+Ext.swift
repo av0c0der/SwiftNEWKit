@@ -1,10 +1,3 @@
-//
-//  Bundle+Ext.swift
-//  SwiftNEW
-//
-//  Created by Ming on 7/1/2025.
-//
-
 import SwiftUI
 
 // MARK: - For App Icon
