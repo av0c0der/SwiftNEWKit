@@ -31,12 +31,6 @@ struct ReleaseNotesVersionBadge: View {
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 8)
-        .background(.regularMaterial)
-        .overlay {
-            RoundedRectangle(cornerRadius: ReleaseNotesLayoutMetrics.cornerRadius, style: .continuous)
-                .strokeBorder(.white.opacity(0.18))
-        }
-        .containerShape(RoundedRectangle(cornerRadius: ReleaseNotesLayoutMetrics.cornerRadius, style: .continuous))
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.bottom)
     }
