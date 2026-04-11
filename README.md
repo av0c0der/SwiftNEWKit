@@ -96,10 +96,6 @@ Changelog(background: .mesh)                 // Adaptive mesh gradient (iOS 18+)
 Changelog(background: .custom(MyGradient())) // Any SwiftUI view
 ```
 
-## Backward Compatibility
-
-The previous type names (`SwiftNEW`, `SwiftNEWHistory`, `SwiftNEWBackground`, `SwiftNEWStrings`) remain available as typealiases.
-
 ## Platforms
 
 iOS 15+ · macOS 12+ · tvOS 17+ · visionOS 1+ · watchOS 8+

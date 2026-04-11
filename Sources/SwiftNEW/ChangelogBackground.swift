@@ -46,11 +46,6 @@ public struct ChangelogBackground {
     public static let mesh = Self(storage: .mesh)
 }
 
-// MARK: - Backward Compatibility
-
-/// Backward-compatible alias for ``ChangelogBackground``.
-public typealias SwiftNEWBackground = ChangelogBackground
-
 // MARK: - Shared Internal Views
 
 /// Renders the appropriate background layer for a changelog sheet.

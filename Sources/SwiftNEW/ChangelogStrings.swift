@@ -57,8 +57,3 @@ public struct ChangelogStrings: Hashable, Sendable {
     /// The default string set (English).
     public static let `default` = Self.english
 }
-
-// MARK: - Backward Compatibility
-
-/// Backward-compatible alias for ``ChangelogStrings``.
-public typealias SwiftNEWStrings = ChangelogStrings

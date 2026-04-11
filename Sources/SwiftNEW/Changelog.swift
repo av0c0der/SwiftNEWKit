@@ -156,12 +156,6 @@ public struct Changelog: View {
     }
 }
 
-// MARK: - Backward Compatibility
-
-/// Backward-compatible alias for ``Changelog``.
-@available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
-public typealias SwiftNEW = Changelog
-
 // MARK: - Previews
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
