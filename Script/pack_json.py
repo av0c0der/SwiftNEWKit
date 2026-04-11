@@ -1,7 +1,7 @@
 import os
 import json
 
-base_dir = "Demo/What's New?"
+base_dir = "Demo/ChangelogKitDemo"
 output_file = "packed_data.json"
 
 packed_data = {}

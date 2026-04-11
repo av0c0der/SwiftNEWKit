@@ -14,24 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SwiftNEW"
-               BuildableName = "SwiftNEW"
-               BlueprintName = "SwiftNEW"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SwiftNEWTests"
-               BuildableName = "SwiftNEWTests"
-               BlueprintName = "SwiftNEWTests"
-               ReferencedContainer = "container:">
+               BlueprintIdentifier = "3A46CBAB285444CC00BE79A3"
+               BuildableName = "ChangelogKitDemo.app"
+               BlueprintName = "ChangelogKitDemo"
+               ReferencedContainer = "container:ChangelogKitDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SwiftNEWTests"
-               BuildableName = "SwiftNEWTests"
-               BlueprintName = "SwiftNEWTests"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -64,6 +40,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "3A46CBAB285444CC00BE79A3"
+            BuildableName = "ChangelogKitDemo.app"
+            BlueprintName = "ChangelogKitDemo"
+            ReferencedContainer = "container:ChangelogKitDemo.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -71,15 +57,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "SwiftNEW"
-            BuildableName = "SwiftNEW"
-            BlueprintName = "SwiftNEW"
-            ReferencedContainer = "container:">
+            BlueprintIdentifier = "3A46CBAB285444CC00BE79A3"
+            BuildableName = "ChangelogKitDemo.app"
+            BlueprintName = "ChangelogKitDemo"
+            ReferencedContainer = "container:ChangelogKitDemo.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

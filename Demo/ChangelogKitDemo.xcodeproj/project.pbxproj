@@ -7,24 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A23CAF52A3AC05C0099CC42 /* SwiftNEW in Frameworks */ = {isa = PBXBuildFile; productRef = 3A23CAF42A3AC05C0099CC42 /* SwiftNEW */; };
-		3A46CBB0285444CC00BE79A3 /* What_s_New_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46CBAF285444CC00BE79A3 /* What_s_New_App.swift */; };
+		3A23CAF52A3AC05C0099CC42 /* ChangelogKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3A23CAF42A3AC05C0099CC42 /* ChangelogKit */; };
+		3A46CBB0285444CC00BE79A3 /* ChangelogKitDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46CBAF285444CC00BE79A3 /* ChangelogKitDemoApp.swift */; };
 		3A46CBB2285444CC00BE79A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46CBB1285444CC00BE79A3 /* ContentView.swift */; };
 		3A46CBB4285444CD00BE79A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBB3285444CD00BE79A3 /* Assets.xcassets */; };
 		3A46CBB8285444CD00BE79A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */; };
-		3AB7E09128630E380059EEFE /* SwiftNEW in Frameworks */ = {isa = PBXBuildFile; productRef = 3AB7E09028630E380059EEFE /* SwiftNEW */; };
 		3AE0026A2962DD540055979A /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AE0026C2962DD540055979A /* data.json */; };
+		9A5A87052F8AAE3F00117E7D /* ChangelogKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9A5A87042F8AAE3F00117E7D /* ChangelogKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3A03F3A82E89A42000B7D001 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = ar; path = ar.lproj/data.json; sourceTree = "<group>"; };
-		3A46CBAC285444CC00BE79A3 /* What's New?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What's New?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A46CBAF285444CC00BE79A3 /* What_s_New_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = What_s_New_App.swift; sourceTree = "<group>"; };
+		3A46CBAC285444CC00BE79A3 /* ChangelogKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangelogKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A46CBAF285444CC00BE79A3 /* ChangelogKitDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangelogKitDemoApp.swift; sourceTree = "<group>"; };
 		3A46CBB1285444CC00BE79A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3A46CBB3285444CD00BE79A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3A46CBB5285444CD00BE79A3 /* What_s_New_.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = What_s_New_.entitlements; sourceTree = "<group>"; };
+		3A46CBB5285444CD00BE79A3 /* ChangelogKitDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChangelogKitDemo.entitlements; sourceTree = "<group>"; };
 		3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3A46CBC4285447F600BE79A3 /* SwiftNEW */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftNEW; path = ../../../SwiftNEW; sourceTree = "<group>"; };
 		3AE0026B2962DD540055979A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/data.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -33,8 +32,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AB7E09128630E380059EEFE /* SwiftNEW in Frameworks */,
-				3A23CAF52A3AC05C0099CC42 /* SwiftNEW in Frameworks */,
+				9A5A87052F8AAE3F00117E7D /* ChangelogKit in Frameworks */,
+				3A23CAF52A3AC05C0099CC42 /* ChangelogKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,7 +43,7 @@
 		3A46CBA3285444CC00BE79A3 = {
 			isa = PBXGroup;
 			children = (
-				3A46CBAE285444CC00BE79A3 /* What's New? */,
+				3A46CBAE285444CC00BE79A3 /* ChangelogKitDemo */,
 				3A46CBAD285444CC00BE79A3 /* Products */,
 				3AB7E08F28630E380059EEFE /* Frameworks */,
 			);
@@ -53,28 +52,27 @@
 		3A46CBAD285444CC00BE79A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A46CBAC285444CC00BE79A3 /* What's New?.app */,
+				3A46CBAC285444CC00BE79A3 /* ChangelogKitDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3A46CBAE285444CC00BE79A3 /* What's New? */ = {
+		3A46CBAE285444CC00BE79A3 /* ChangelogKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				3A46CBAF285444CC00BE79A3 /* What_s_New_App.swift */,
+				3A46CBAF285444CC00BE79A3 /* ChangelogKitDemoApp.swift */,
 				3A46CBB1285444CC00BE79A3 /* ContentView.swift */,
 				3AE0026C2962DD540055979A /* data.json */,
 				3A46CBB3285444CD00BE79A3 /* Assets.xcassets */,
-				3A46CBB5285444CD00BE79A3 /* What_s_New_.entitlements */,
+				3A46CBB5285444CD00BE79A3 /* ChangelogKitDemo.entitlements */,
 				3A46CBB6285444CD00BE79A3 /* Preview Content */,
 			);
-			path = "What's New?";
+			path = ChangelogKitDemo;
 			sourceTree = "<group>";
 		};
 		3A46CBB6285444CD00BE79A3 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				3A46CBC4285447F600BE79A3 /* SwiftNEW */,
 				3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -90,9 +88,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A46CBAB285444CC00BE79A3 /* What's New? */ = {
+		3A46CBAB285444CC00BE79A3 /* ChangelogKitDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A46CBBB285444CD00BE79A3 /* Build configuration list for PBXNativeTarget "What's New?" */;
+			buildConfigurationList = 3A46CBBB285444CD00BE79A3 /* Build configuration list for PBXNativeTarget "ChangelogKitDemo" */;
 			buildPhases = (
 				3A46CBA8285444CC00BE79A3 /* Sources */,
 				3A46CBA9285444CC00BE79A3 /* Frameworks */,
@@ -102,13 +100,13 @@
 			);
 			dependencies = (
 			);
-			name = "What's New?";
+			name = ChangelogKitDemo;
 			packageProductDependencies = (
-				3AB7E09028630E380059EEFE /* SwiftNEW */,
-				3A23CAF42A3AC05C0099CC42 /* SwiftNEW */,
+				3A23CAF42A3AC05C0099CC42 /* ChangelogKit */,
+				9A5A87042F8AAE3F00117E7D /* ChangelogKit */,
 			);
-			productName = "What's New?";
-			productReference = 3A46CBAC285444CC00BE79A3 /* What's New?.app */;
+			productName = ChangelogKitDemo;
+			productReference = 3A46CBAC285444CC00BE79A3 /* ChangelogKitDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -126,7 +124,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A46CBA7285444CC00BE79A3 /* Build configuration list for PBXProject "What's New?" */;
+			buildConfigurationList = 3A46CBA7285444CC00BE79A3 /* Build configuration list for PBXProject "ChangelogKitDemo" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -137,13 +135,13 @@
 			);
 			mainGroup = 3A46CBA3285444CC00BE79A3;
 			packageReferences = (
-				3A23CAF32A3AC05C0099CC42 /* XCLocalSwiftPackageReference ".." */,
+				9A5A87032F8AAE3F00117E7D /* XCLocalSwiftPackageReference "../../SwiftNEWKit" */,
 			);
 			productRefGroup = 3A46CBAD285444CC00BE79A3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A46CBAB285444CC00BE79A3 /* What's New? */,
+				3A46CBAB285444CC00BE79A3 /* ChangelogKitDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -167,7 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A46CBB2285444CC00BE79A3 /* ContentView.swift in Sources */,
-				3A46CBB0285444CC00BE79A3 /* What_s_New_App.swift in Sources */,
+				3A46CBB0285444CC00BE79A3 /* ChangelogKitDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,10 +300,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "What's New?/What_s_New_.entitlements";
+				CODE_SIGN_ENTITLEMENTS = ChangelogKitDemo/ChangelogKitDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 17;
-				DEVELOPMENT_ASSET_PATHS = "\"What's New?/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ChangelogKitDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -319,7 +317,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 6.2;
-				PRODUCT_BUNDLE_IDENTIFIER = media.1998.WhatsNew;
+				PRODUCT_BUNDLE_IDENTIFIER = io.jauzee.changelogKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -339,10 +337,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "What's New?/What_s_New_.entitlements";
+				CODE_SIGN_ENTITLEMENTS = ChangelogKitDemo/ChangelogKitDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 17;
-				DEVELOPMENT_ASSET_PATHS = "\"What's New?/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ChangelogKitDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -356,7 +354,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 6.2;
-				PRODUCT_BUNDLE_IDENTIFIER = media.1998.WhatsNew;
+				PRODUCT_BUNDLE_IDENTIFIER = io.jauzee.changelogKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -374,7 +372,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A46CBA7285444CC00BE79A3 /* Build configuration list for PBXProject "What's New?" */ = {
+		3A46CBA7285444CC00BE79A3 /* Build configuration list for PBXProject "ChangelogKitDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A46CBB9285444CD00BE79A3 /* Debug */,
@@ -383,7 +381,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A46CBBB285444CD00BE79A3 /* Build configuration list for PBXNativeTarget "What's New?" */ = {
+		3A46CBBB285444CD00BE79A3 /* Build configuration list for PBXNativeTarget "ChangelogKitDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A46CBBC285444CD00BE79A3 /* Debug */,
@@ -395,20 +393,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		3A23CAF32A3AC05C0099CC42 /* XCLocalSwiftPackageReference ".." */ = {
+		9A5A87032F8AAE3F00117E7D /* XCLocalSwiftPackageReference "../../SwiftNEWKit" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ..;
+			relativePath = ../../SwiftNEWKit;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3A23CAF42A3AC05C0099CC42 /* SwiftNEW */ = {
+		3A23CAF42A3AC05C0099CC42 /* ChangelogKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = SwiftNEW;
+			productName = ChangelogKit;
 		};
-		3AB7E09028630E380059EEFE /* SwiftNEW */ = {
+		9A5A87042F8AAE3F00117E7D /* ChangelogKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = SwiftNEW;
+			productName = ChangelogKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
