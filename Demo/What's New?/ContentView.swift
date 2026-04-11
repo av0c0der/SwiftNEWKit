@@ -1,5 +1,5 @@
 import SwiftUI
-import SwiftNEW
+import Changelog
 
 private struct DemoChangelogData: Decodable {
     let currentItems: [ReleaseNotes]
@@ -35,7 +35,7 @@ struct ContentView: View {
             showsReleaseNotes = true
         }
         .fullScreenCover(isPresented: $showsReleaseNotes) {
-            SwiftNEW(
+            Changelog(
                 currentItems: demoChangelogData.currentItems,
                 historySections: demoChangelogData.historySections,
                 onContinue: {
@@ -52,7 +52,7 @@ struct ContentView: View {
 }
 
 #Preview("Embed") {
-    SwiftNEW(
+    Changelog(
         currentItems: demoChangelogData.currentItems,
         historySections: demoChangelogData.historySections
     )

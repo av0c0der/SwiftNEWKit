@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// A single versioned release containing one or more ``ReleaseNote`` entries.
 public struct ReleaseNotes: Codable, Hashable, Identifiable {
     public var id = UUID()
     public var version: String
@@ -53,6 +54,7 @@ public struct ReleaseNotes: Codable, Hashable, Identifiable {
 
 }
 
+/// A named group of ``ReleaseNotes`` shown under a shared section header.
 public struct ReleaseNotesSection: Codable, Hashable, Identifiable {
     public var id = UUID()
     public var title: String?
@@ -68,6 +70,7 @@ public struct ReleaseNotesSection: Codable, Hashable, Identifiable {
     }
 }
 
+/// A single changelog entry with an SF Symbol icon, title, and description.
 public struct ReleaseNote: Codable, Hashable, Identifiable {
     public var id = UUID()
     public var icon: String
@@ -124,7 +127,7 @@ private enum ReleaseNotesDateParser {
     }()
 }
 
-enum SwiftNEWPreviewData {
+enum ChangelogPreviewData {
     static let currentItems: [ReleaseNotes] = [
         ReleaseNotes(
             version: "2.1.0",

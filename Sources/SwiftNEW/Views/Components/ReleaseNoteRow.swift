@@ -63,14 +63,14 @@ struct ReleaseNoteRow: View {
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview("Release Note Row") {
-    ReleaseNoteRow(note: SwiftNEWPreviewData.sampleNote, color: .indigo)
+    ReleaseNoteRow(note: ChangelogPreviewData.sampleNote, color: .indigo)
         .padding()
         .frame(maxWidth: 360)
 }
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview("Release Note Row (RTL)") {
-    ReleaseNoteRow(note: SwiftNEWPreviewData.rtlNote, color: .indigo)
+    ReleaseNoteRow(note: ChangelogPreviewData.rtlNote, color: .indigo)
         .padding()
         .frame(maxWidth: 360)
         .environment(\.layoutDirection, .rightToLeft)

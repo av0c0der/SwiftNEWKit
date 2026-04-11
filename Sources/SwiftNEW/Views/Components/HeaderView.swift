@@ -1,7 +1,7 @@
 import SwiftUI
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
-extension SwiftNEW {
+extension Changelog {
     #if os(iOS)
     public var headings: some View {
         VStack {
@@ -26,9 +26,9 @@ extension SwiftNEW {
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview("Header") {
-    SwiftNEW(
+    Changelog(
         color: .indigo,
-        currentItems: SwiftNEWPreviewData.currentItems,
+        currentItems: ChangelogPreviewData.currentItems,
         historySections: []
     )
     .headings

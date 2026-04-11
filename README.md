@@ -1,6 +1,6 @@
 # SwiftNEW
 
-A SwiftUI "What's New" view for iOS, macOS, tvOS, and visionOS. Render release notes with customizable backgrounds, grouped version history, and adaptive styling.
+A SwiftUI changelog view for iOS, macOS, tvOS, and visionOS. Render release notes with customizable backgrounds, grouped version history, and adaptive styling.
 
 ## Usage
 
@@ -8,12 +8,12 @@ A SwiftUI "What's New" view for iOS, macOS, tvOS, and visionOS. Render release n
 import SwiftNEW
 
 struct ContentView: View {
-    @State private var showNew = false
+    @State private var showChangelog = false
 
     var body: some View {
-        Button("What's New") { showNew = true }
-            .fullScreenCover(isPresented: $showNew) {
-                SwiftNEW(
+        Button("What's New") { showChangelog = true }
+            .fullScreenCover(isPresented: $showChangelog) {
+                Changelog(
                     currentItems: [
                         ReleaseNotes(
                             version: "1.0.0",
@@ -22,14 +22,14 @@ struct ContentView: View {
                             ]
                         )
                     ],
-                    onContinue: { showNew = false }
+                    onContinue: { showChangelog = false }
                 )
             }
     }
 }
 ```
 
-SwiftNEW is a content view — present it with `.sheet`, `.fullScreenCover`, or embed it directly.
+`Changelog` is a content view — present it with `.sheet`, `.fullScreenCover`, or embed it directly.
 
 ## Parameters
 
@@ -38,13 +38,27 @@ SwiftNEW is a content view — present it with `.sheet`, `.fullScreenCover`, or 
 | `currentItems` | `[ReleaseNotes]` | `[]` | Release notes for the main view |
 | `historySections` | `[ReleaseNotesSection]` | `[]` | Grouped items for the history sheet |
 | `color` | `Color` | `.accentColor` | Theme color for badges and buttons |
-| `background` | `SwiftNEWBackground` | system | `.solidColor(.blue)`, `.mesh`, or `.custom(view)` |
-| `strings` | `SwiftNEWStrings` | `.default` | Override UI copy |
+| `background` | `ChangelogBackground` | system | `.solidColor(.blue)`, `.mesh`, or `.custom(view)` |
+| `strings` | `ChangelogStrings` | `.default` | Override UI copy |
 | `history` | `Bool` | `true` | Show history navigation |
 | `dateFormat` | `Date.FormatStyle` | year-month-day | Date display format |
 | `onContinue` | `(() -> Void)?` | `nil` | Continue button callback |
 
 A convenience initializer also accepts a flat `historyItems: [ReleaseNotes]` array.
+
+### Standalone History
+
+Use `ChangelogHistory` to present version history directly:
+
+```swift
+.sheet(isPresented: $showHistory) {
+    ChangelogHistory(
+        historySections: sections,
+        color: .indigo,
+        onDismiss: { showHistory = false }
+    )
+}
+```
 
 ## Data Models
 
@@ -64,13 +78,27 @@ struct ReleaseNotesSection: Codable, Hashable {
 struct ReleaseNote: Codable, Hashable {
     var icon: String            // SF Symbol name
     var iconBackground: String? // Hex color, e.g. "#007AFF"
+    var iconColor: String?      // Icon tint override
+    var borderColor: String?    // Icon border color
     var title: String
     var subtitle: String?
     var body: String
 }
 ```
 
-These match the JSON format — decode a `ChangelogPayload` to get `currentItems` and `historySections`.
+These conform to `Codable` — decode directly from JSON.
+
+## Background Styles
+
+```swift
+Changelog(background: .solidColor(.blue))   // Solid color
+Changelog(background: .mesh)                 // Adaptive mesh gradient (iOS 18+)
+Changelog(background: .custom(MyGradient())) // Any SwiftUI view
+```
+
+## Backward Compatibility
+
+The previous type names (`SwiftNEW`, `SwiftNEWHistory`, `SwiftNEWBackground`, `SwiftNEWStrings`) remain available as typealiases.
 
 ## Platforms
 

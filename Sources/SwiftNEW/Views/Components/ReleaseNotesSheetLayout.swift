@@ -46,7 +46,7 @@ struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View 
             .font(.largeTitle.bold())
     } content: {
         ReleaseNotesList(
-            sections: SwiftNEWPreviewData.historySections,
+            sections: ChangelogPreviewData.historySections,
             color: .indigo,
             showsVersionBadges: true,
             hidesFirstVersionBadge: false,
@@ -66,7 +66,7 @@ struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View 
             .font(.largeTitle.bold())
     } content: {
         ReleaseNotesList(
-            sections: SwiftNEWPreviewData.rtlHistorySections,
+            sections: ChangelogPreviewData.rtlHistorySections,
             color: .indigo,
             showsVersionBadges: true,
             hidesFirstVersionBadge: false,

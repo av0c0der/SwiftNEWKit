@@ -6,12 +6,15 @@ import UIKit
 import AppKit
 #endif
 
-/// A standalone history view that can be presented directly without showing
-/// the current-version sheet first.
+/// A standalone history view that presents grouped release notes without
+/// showing the current-version screen first.
+///
+/// Use this when you want to offer a dedicated "Version History" screen
+/// independent of the "What's New" flow.
 ///
 /// ```swift
 /// .sheet(isPresented: $showHistory) {
-///     SwiftNEWHistory(
+///     ChangelogHistory(
 ///         historySections: historySections,
 ///         color: .indigo,
 ///         onDismiss: { showHistory = false }
@@ -19,25 +22,45 @@ import AppKit
 /// }
 /// ```
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
-public struct SwiftNEWHistory: View {
+public struct ChangelogHistory: View {
+    /// Grouped release sections to display.
     let historySections: [ReleaseNotesSection]
+
+    /// Theme color for version badges and accents.
     let color: Color
-    let background: SwiftNEWBackground
-    let strings: SwiftNEWStrings
+
+    /// Background style for the sheet.
+    let background: ChangelogBackground
+
+    /// Customizable UI strings.
+    let strings: ChangelogStrings
+
+    /// Format used when displaying release dates.
     let dateFormat: Date.FormatStyle
+
+    /// Called when the user dismisses the history view.
     let onDismiss: (() -> Void)?
 
+    /// Creates a standalone history view.
+    ///
+    /// - Parameters:
+    ///   - historySections: Grouped historical releases.
+    ///   - color: Theme color. Defaults to `.accentColor`.
+    ///   - background: Background style. Defaults to the system background color.
+    ///   - strings: Override default UI copy.
+    ///   - dateFormat: Format for release dates.
+    ///   - onDismiss: Callback when the user dismisses the view.
     public init(
         historySections: [ReleaseNotesSection],
         color: Color = .accentColor,
-        background: SwiftNEWBackground = {
+        background: ChangelogBackground = {
             #if os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)
             .background(Color(UIColor.systemBackground))
             #elseif os(macOS)
             .background(Color(NSColor.windowBackgroundColor))
             #endif
         }(),
-        strings: SwiftNEWStrings = .default,
+        strings: ChangelogStrings = .default,
         dateFormat: Date.FormatStyle = .dateTime.year().month().day(),
         onDismiss: (() -> Void)? = nil
     ) {
@@ -51,14 +74,14 @@ public struct SwiftNEWHistory: View {
 
     public var body: some View {
         ZStack {
-            backgroundLayer
+            ChangelogBackgroundLayer(background: background, color: color)
             content
                 #if os(visionOS)
                 .padding()
                 #endif
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .modifier(HistoryPresentationBackgroundModifier(background: background))
+        .modifier(ChangelogPresentationModifier(background: background))
     }
 
     private var content: some View {
@@ -94,43 +117,20 @@ public struct SwiftNEWHistory: View {
             #endif
         }
     }
-
-    @ViewBuilder
-    private var backgroundLayer: some View {
-        switch background.storage {
-        case let .view(view, _):
-            view
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea()
-        case .mesh:
-            MeshView(color: color)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea()
-        }
-    }
 }
 
-private struct HistoryPresentationBackgroundModifier: ViewModifier {
-    let background: SwiftNEWBackground
+// MARK: - Backward Compatibility
 
-    func body(content: Content) -> some View {
-        if #available(iOS 16.4, tvOS 16.4, *) {
-            switch background.storage {
-            case let .view(_, presentationColor):
-                content.presentationBackground(presentationColor ?? .clear)
-            case .mesh:
-                content.presentationBackground(.clear)
-            }
-        } else {
-            content
-        }
-    }
-}
+/// Backward-compatible alias for ``ChangelogHistory``.
+@available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
+public typealias SwiftNEWHistory = ChangelogHistory
+
+// MARK: - Previews
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
-#Preview("SwiftNEWHistory") {
-    SwiftNEWHistory(
-        historySections: SwiftNEWPreviewData.historySections,
+#Preview("ChangelogHistory") {
+    ChangelogHistory(
+        historySections: ChangelogPreviewData.historySections,
         color: .indigo,
         background: .mesh
     )

@@ -51,7 +51,7 @@ struct ReleaseNotesList: View {
 #Preview {
     ScrollView {
         ReleaseNotesList(
-            sections: SwiftNEWPreviewData.historySections,
+            sections: ChangelogPreviewData.historySections,
             color: .indigo,
             showsVersionBadges: true,
             hidesFirstVersionBadge: false,

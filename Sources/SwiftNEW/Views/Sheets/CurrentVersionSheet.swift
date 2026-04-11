@@ -1,7 +1,7 @@
 import SwiftUI
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
-extension SwiftNEW {
+extension Changelog {
     public var sheetCurrent: some View {
         ReleaseNotesSheetLayout {
             headings
@@ -27,11 +27,11 @@ extension SwiftNEW {
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview("Current Sheet") {
-    SwiftNEW(
+    Changelog(
         color: .indigo,
         background: .mesh,
-        currentItems: SwiftNEWPreviewData.currentItems,
-        historySections: SwiftNEWPreviewData.historySections
+        currentItems: ChangelogPreviewData.currentItems,
+        historySections: ChangelogPreviewData.historySections
     )
     .sheetCurrent
     .padding()
