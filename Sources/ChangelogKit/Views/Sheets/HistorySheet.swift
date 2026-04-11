@@ -2,7 +2,7 @@ import SwiftUI
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension Changelog {
-    public var sheetHistory: some View {
+    var sheetHistory: some View {
         ReleaseNotesSheetLayout {
             Text(strings.historyTitle)
                 .bold().font(.largeTitle)

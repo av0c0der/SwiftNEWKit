@@ -2,7 +2,7 @@ import SwiftUI
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension Changelog {
-    public var sheetCurrent: some View {
+    var sheetCurrent: some View {
         ReleaseNotesSheetLayout {
             headings
                 .padding(.horizontal)
