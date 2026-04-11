@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Changelog",
+    name: "ChangelogKit",
     platforms: [
         .iOS(.v15),
         .macOS(.v14),
@@ -13,13 +13,13 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Changelog",
-            targets: ["Changelog"]),
+            name: "ChangelogKit",
+            targets: ["ChangelogKit"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "Changelog",
+            name: "ChangelogKit",
             dependencies: []
         )
     ]

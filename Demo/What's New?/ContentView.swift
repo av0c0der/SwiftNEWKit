@@ -1,5 +1,5 @@
 import SwiftUI
-import Changelog
+import ChangelogKit
 
 private struct DemoChangelogData: Decodable {
     let currentItems: [ReleaseNotes]

@@ -1,11 +1,11 @@
-# Changelog
+# ChangelogKit
 
 A SwiftUI changelog view for iOS, macOS, tvOS, and visionOS. Render release notes with customizable backgrounds, grouped version history, and adaptive styling.
 
 ## Usage
 
 ```swift
-import Changelog
+import ChangelogKit
 
 struct ContentView: View {
     @State private var showChangelog = false
