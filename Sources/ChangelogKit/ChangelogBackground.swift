@@ -1,13 +1,13 @@
 import SwiftUI
 
-/// Controls the background style of ``Changelog`` and ``ChangelogHistory``
+/// Controls the background style of ``ChangelogScreen`` and ``ChangelogHistoryScreen``
 /// sheets.
 ///
 /// Use the static factory methods to create a background:
 /// ```swift
-/// Changelog(background: .mesh)
-/// Changelog(background: .solidColor(.blue))
-/// Changelog(background: .custom(MyGradient()))
+/// ChangelogScreen(background: .mesh)
+/// ChangelogScreen(background: .solidColor(.blue))
+/// ChangelogScreen(background: .custom(MyGradient()))
 /// ```
 public struct ChangelogBackground {
     enum Storage {

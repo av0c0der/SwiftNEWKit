@@ -1,7 +1,7 @@
 import SwiftUI
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
-extension Changelog {
+extension ChangelogScreen {
     public var showHistoryButton: some View {
         Button(action: {
             historySheet = true
@@ -62,21 +62,21 @@ extension Changelog {
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview("Buttons") {
     VStack(spacing: 20) {
-        Changelog(
+        ChangelogScreen(
             color: .indigo,
             currentItems: ChangelogPreviewData.currentItems,
             historySections: ChangelogPreviewData.historySections
         )
         .showHistoryButton
 
-        Changelog(
+        ChangelogScreen(
             color: .indigo,
             currentItems: ChangelogPreviewData.currentItems,
             historySections: []
         )
         .closeCurrentButton
 
-        Changelog(
+        ChangelogScreen(
             color: .indigo,
             currentItems: ChangelogPreviewData.currentItems,
             historySections: []

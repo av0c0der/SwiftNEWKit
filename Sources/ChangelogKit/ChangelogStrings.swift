@@ -1,10 +1,10 @@
 import Foundation
 
-/// Customizable UI strings for ``Changelog`` and ``ChangelogHistory``.
+/// Customizable UI strings for ``ChangelogScreen`` and ``ChangelogHistoryScreen``.
 ///
 /// Override individual labels to localize the changelog UI:
 /// ```swift
-/// Changelog(
+/// ChangelogScreen(
 ///     strings: ChangelogStrings(
 ///         historyTitle: "Historial",
 ///         continueButton: "Continuar"

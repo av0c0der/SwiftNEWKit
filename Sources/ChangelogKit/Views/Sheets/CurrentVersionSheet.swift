@@ -1,7 +1,7 @@
 import SwiftUI
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
-extension Changelog {
+extension ChangelogScreen {
     var sheetCurrent: some View {
         ReleaseNotesSheetLayout {
             headings
@@ -27,7 +27,7 @@ extension Changelog {
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview("Current Sheet") {
-    Changelog(
+    ChangelogScreen(
         color: .indigo,
         background: .mesh,
         currentItems: ChangelogPreviewData.currentItems,

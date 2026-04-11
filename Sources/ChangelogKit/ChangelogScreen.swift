@@ -9,12 +9,12 @@ import AppKit
 /// A SwiftUI view that presents release notes and version history as a
 /// polished changelog screen.
 ///
-/// `Changelog` is a content view — present it with `.sheet`,
+/// `ChangelogScreen` is a content view — present it with `.sheet`,
 /// `.fullScreenCover`, or embed it directly in your view hierarchy.
 ///
 /// ```swift
 /// .fullScreenCover(isPresented: $showChangelog) {
-///     Changelog(
+///     ChangelogScreen(
 ///         currentItems: releaseNotes,
 ///         historySections: history,
 ///         onContinue: { showChangelog = false }
@@ -22,7 +22,7 @@ import AppKit
 /// }
 /// ```
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
-public struct Changelog: View {
+public struct ChangelogScreen: View {
     @State var historySheet: Bool = false
 
     /// Release notes shown on the main "What's New" screen.
@@ -160,7 +160,7 @@ public struct Changelog: View {
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview("Changelog") {
-    Changelog(
+    ChangelogScreen(
         color: .blue,
         background: .mesh,
         currentItems: ChangelogPreviewData.currentItems,
@@ -170,7 +170,7 @@ public struct Changelog: View {
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview("Changelog Alternate Styling") {
-    Changelog(
+    ChangelogScreen(
         color: Color(.systemMint),
         background: {
             #if os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)

@@ -14,7 +14,7 @@ import AppKit
 ///
 /// ```swift
 /// .sheet(isPresented: $showHistory) {
-///     ChangelogHistory(
+///     ChangelogHistoryScreen(
 ///         historySections: historySections,
 ///         color: .indigo,
 ///         onDismiss: { showHistory = false }
@@ -22,7 +22,7 @@ import AppKit
 /// }
 /// ```
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
-public struct ChangelogHistory: View {
+public struct ChangelogHistoryScreen: View {
     /// Grouped release sections to display.
     let historySections: [ReleaseNotesSection]
 
@@ -123,7 +123,7 @@ public struct ChangelogHistory: View {
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview("ChangelogHistory") {
-    ChangelogHistory(
+    ChangelogHistoryScreen(
         historySections: ChangelogPreviewData.historySections,
         color: .indigo,
         background: .mesh

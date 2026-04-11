@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         Button("What's New") { showChangelog = true }
             .fullScreenCover(isPresented: $showChangelog) {
-                Changelog(
+                ChangelogScreen(
                     currentItems: [
                         ReleaseNotes(
                             version: "1.0.0",
@@ -29,7 +29,7 @@ struct ContentView: View {
 }
 ```
 
-`Changelog` is a content view — present it with `.sheet`, `.fullScreenCover`, or embed it directly.
+`ChangelogScreen` is a content view — present it with `.sheet`, `.fullScreenCover`, or embed it directly.
 
 ## Parameters
 
@@ -48,11 +48,11 @@ A convenience initializer also accepts a flat `historyItems: [ReleaseNotes]` arr
 
 ### Standalone History
 
-Use `ChangelogHistory` to present version history directly:
+Use `ChangelogHistoryScreen` to present version history directly:
 
 ```swift
 .sheet(isPresented: $showHistory) {
-    ChangelogHistory(
+    ChangelogHistoryScreen(
         historySections: sections,
         color: .indigo,
         onDismiss: { showHistory = false }
@@ -91,9 +91,9 @@ These conform to `Codable` — decode directly from JSON.
 ## Background Styles
 
 ```swift
-Changelog(background: .solidColor(.blue))   // Solid color
-Changelog(background: .mesh)                 // Adaptive mesh gradient (iOS 18+)
-Changelog(background: .custom(MyGradient())) // Any SwiftUI view
+ChangelogScreen(background: .solidColor(.blue))   // Solid color
+ChangelogScreen(background: .mesh)                 // Adaptive mesh gradient (iOS 18+)
+ChangelogScreen(background: .custom(MyGradient())) // Any SwiftUI view
 ```
 
 ## Platforms

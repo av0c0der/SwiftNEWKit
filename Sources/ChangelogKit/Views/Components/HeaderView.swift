@@ -1,7 +1,7 @@
 import SwiftUI
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
-extension Changelog {
+extension ChangelogScreen {
     #if os(iOS)
     public var headings: some View {
         VStack {
@@ -26,7 +26,7 @@ extension Changelog {
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview("Header") {
-    Changelog(
+    ChangelogScreen(
         color: .indigo,
         currentItems: ChangelogPreviewData.currentItems,
         historySections: []

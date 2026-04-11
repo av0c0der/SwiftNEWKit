@@ -35,7 +35,7 @@ struct ContentView: View {
             showsReleaseNotes = true
         }
         .fullScreenCover(isPresented: $showsReleaseNotes) {
-            Changelog(
+            ChangelogScreen(
                 currentItems: demoChangelogData.currentItems,
                 historySections: demoChangelogData.historySections,
                 onContinue: {
@@ -52,7 +52,7 @@ struct ContentView: View {
 }
 
 #Preview("Embed") {
-    Changelog(
+    ChangelogScreen(
         currentItems: demoChangelogData.currentItems,
         historySections: demoChangelogData.historySections
     )
