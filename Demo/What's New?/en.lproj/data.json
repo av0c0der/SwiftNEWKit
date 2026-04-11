@@ -113,7 +113,7 @@
               "icon": "text.bubble",
               "iconBackground": "#32ADE6",
               "title": "String overrides",
-              "body": "All visible copy can be configured through SwiftNEWStrings."
+              "body": "All visible copy can be configured through ChangelogStrings."
             }
           ]
         },

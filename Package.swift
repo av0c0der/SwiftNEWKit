@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftNEW",
+    name: "Changelog",
     platforms: [
         .iOS(.v15),
         .macOS(.v14),
@@ -13,18 +13,14 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "SwiftNEW",
-            targets: ["SwiftNEW"]),
+            name: "Changelog",
+            targets: ["Changelog"]),
     ],
-    dependencies: [
-        
-    ],
+    dependencies: [],
     targets: [
         .target(
-            name: "SwiftNEW",
-            dependencies: [
-                
-            ]
+            name: "Changelog",
+            dependencies: []
         )
     ]
 )

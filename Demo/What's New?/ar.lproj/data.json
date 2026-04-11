@@ -113,7 +113,7 @@
               "icon": "text.bubble",
               "iconBackground": "#32ADE6",
               "title": "تخصيص النصوص",
-              "body": "يمكن تخصيص جميع النصوص الظاهرة عبر SwiftNEWStrings."
+              "body": "يمكن تخصيص جميع النصوص الظاهرة عبر ChangelogStrings."
             }
           ]
         },
