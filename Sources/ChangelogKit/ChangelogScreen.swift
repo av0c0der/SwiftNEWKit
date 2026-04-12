@@ -100,7 +100,7 @@ public struct ChangelogScreen: View {
                 color: color,
                 showsVersionBadges: true,
                 hidesFirstVersionBadge: false,
-                fillsScrollViewportPerSection: false,
+                fillsScrollViewportPerSection: true,
                 sectionBoundaryTitle: lastSeenVersion == nil ? nil : strings.previouslySeenTitle,
                 sectionBoundaryVersion: lastSeenVersion,
                 dateFormat: dateFormat
