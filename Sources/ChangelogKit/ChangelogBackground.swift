@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Controls the background style of ``ChangelogScreen`` and ``ChangelogHistoryScreen``
+/// Controls the background style of ``ChangelogScreen``.
 /// sheets.
 ///
 /// Use the static factory methods to create a background:

@@ -2,11 +2,13 @@ import SwiftUI
 import ChangelogKit
 
 private struct DemoChangelogData {
-    let currentItems: [ReleaseNotes]
-    let historySections: [ReleaseNotesSection]
+    let sections: [ReleaseNotesSection]
+    let lastSeenVersion: String
 }
 
 private enum DemoChangelogLoader {
+    private static let lastSeenVersion = "3.3.0"
+
     static let data: DemoChangelogData = load()
     static let arabicData: DemoChangelogData = load(localization: "ar")
 
@@ -22,10 +24,11 @@ private enum DemoChangelogLoader {
 
         do {
             let data = try Data(contentsOf: url)
-            let historySections = try JSONDecoder().decode([ReleaseNotesSection].self, from: data)
+            let sections = try JSONDecoder().decode([ReleaseNotesSection].self, from: data)
+
             return DemoChangelogData(
-                currentItems: historySections.first?.items ?? [],
-                historySections: historySections
+                sections: sections,
+                lastSeenVersion: lastSeenVersion
             )
         } catch {
             fatalError("Failed to decode demo changelog JSON: \(error)")
@@ -45,8 +48,8 @@ struct ContentView: View {
         }
         .fullScreenCover(isPresented: $showsReleaseNotes) {
             ChangelogScreen(
-                currentItems: demoChangelogData.currentItems,
-                historySections: demoChangelogData.historySections,
+                sections: demoChangelogData.sections,
+                lastSeenVersion: demoChangelogData.lastSeenVersion,
                 onContinue: {
                     showsReleaseNotes = false
                     print("Continue tapped")
@@ -62,15 +65,15 @@ struct ContentView: View {
 
 #Preview("Embed") {
     ChangelogScreen(
-        currentItems: demoChangelogData.currentItems,
-        historySections: demoChangelogData.historySections
+        sections: demoChangelogData.sections,
+        lastSeenVersion: demoChangelogData.lastSeenVersion
     )
 }
 
 #Preview("Embed Arabic") {
     ChangelogScreen(
-        currentItems: demoArabicChangelogData.currentItems,
-        historySections: demoArabicChangelogData.historySections
+        sections: demoArabicChangelogData.sections,
+        lastSeenVersion: demoArabicChangelogData.lastSeenVersion
     )
     .environment(\.layoutDirection, .rightToLeft)
     .environment(\.locale, Locale(identifier: "ar"))

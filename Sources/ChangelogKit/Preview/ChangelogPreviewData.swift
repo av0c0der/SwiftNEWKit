@@ -1,42 +1,27 @@
 import Foundation
 
 enum ChangelogPreviewData {
-    static let currentItems: [ReleaseNotes] = [
-        ReleaseNotes(
-            version: "2.1.0",
-            date: Date(timeIntervalSince1970: 1_743_984_000),
-            subtitle: "Current release",
-            notes: [
-                ReleaseNote(
-                    icon: "sparkles",
-                    iconBackground: "#4F46E5",
-                    title: "Sectioned changelog",
-                    body: "History entries can now be grouped under optional section headers."
-                )
-            ]
-        ),
-        ReleaseNotes(
-            version: "2.0.1",
-            date: Date(timeIntervalSince1970: 1_741_305_600),
-            notes: [
-                ReleaseNote(
-                    icon: "wrench.and.screwdriver.fill",
-                    iconBackground: "#10B981",
-                    title: "Layout fixes",
-                    body: "Version badges now render inside each section instead of acting as sticky headers."
-                )
-            ]
-        )
-    ]
+    static let lastSeenVersion = "3.0.0"
 
-    static let historySections: [ReleaseNotesSection] = [
+    static let sections: [ReleaseNotesSection] = [
         ReleaseNotesSection(
-            title: "2.0 Kyoto",
+            title: "3.0 Kyoto",
             items: [
-                currentItems[0],
-                currentItems[1],
                 ReleaseNotes(
-                    version: "2.0.0",
+                    version: "3.1.2",
+                    date: Date(timeIntervalSince1970: 1_743_984_000),
+                    subtitle: "Current release",
+                    notes: [
+                        ReleaseNote(
+                            icon: "sparkles",
+                            iconBackground: "#4F46E5",
+                            title: "Sectioned changelog",
+                            body: "History entries can now be grouped under optional section headers."
+                        )
+                    ]
+                ),
+                ReleaseNotes(
+                    version: "3.0.0",
                     date: Date(timeIntervalSince1970: 1_728_086_400),
                     notes: [
                         ReleaseNote(
@@ -51,10 +36,10 @@ enum ChangelogPreviewData {
             ]
         ),
         ReleaseNotesSection(
-            title: "1.0 Lisbon",
+            title: "2.0 Lisbon",
             items: [
                 ReleaseNotes(
-                    version: "1.1.0",
+                    version: "2.1.0",
                     date: Date(timeIntervalSince1970: 1_722_643_200),
                     notes: [
                         ReleaseNote(
@@ -66,7 +51,7 @@ enum ChangelogPreviewData {
                     ]
                 ),
                 ReleaseNotes(
-                    version: "1.0.0",
+                    version: "2.0.0",
                     date: Date(timeIntervalSince1970: 1_707_264_000),
                     notes: [
                         ReleaseNote(
@@ -81,7 +66,7 @@ enum ChangelogPreviewData {
         )
     ]
 
-    static let sampleNote = currentItems[0].notes[0]
+    static let sampleNote = sections[0].items[0].notes[0]
 
     // MARK: - RTL (Arabic)
 
@@ -93,27 +78,25 @@ enum ChangelogPreviewData {
         body: "يعرض العرض التجريبي الآن سجل تغييرات مُجمعًا داخل أقسام للإصدارات الرئيسية بدلًا من قائمة واحدة مسطحة."
     )
 
-    static let rtlCurrentItems: [ReleaseNotes] = [
-        ReleaseNotes(
-            version: "2.1.0",
-            date: Date(timeIntervalSince1970: 1_743_984_000),
-            notes: [
-                rtlNote,
-                ReleaseNote(
-                    icon: "slider.horizontal.3",
-                    iconBackground: "#34C759",
-                    title: "رؤوس أقسام مثبتة",
-                    body: "أثناء التمرير، يعرض الرأس المثبت عنوان القسم النشط بدلًا من شارة الإصدار الحالية."
-                )
-            ]
-        )
-    ]
+    static let rtlLastSeenVersion = "2.0.0"
 
-    static let rtlHistorySections: [ReleaseNotesSection] = [
+    static let rtlSections: [ReleaseNotesSection] = [
         ReleaseNotesSection(
             title: "(2.0) كيوتو",
             items: [
-                rtlCurrentItems[0],
+                ReleaseNotes(
+                    version: "2.1.0",
+                    date: Date(timeIntervalSince1970: 1_743_984_000),
+                    notes: [
+                        rtlNote,
+                        ReleaseNote(
+                            icon: "slider.horizontal.3",
+                            iconBackground: "#34C759",
+                            title: "رؤوس أقسام مثبتة",
+                            body: "أثناء التمرير، يعرض الرأس المثبت عنوان القسم النشط بدلًا من شارة الإصدار الحالية."
+                        )
+                    ]
+                ),
                 ReleaseNotes(
                     version: "2.0.0",
                     date: Date(timeIntervalSince1970: 1_728_086_400),

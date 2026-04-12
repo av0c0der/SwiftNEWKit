@@ -39,8 +39,8 @@ struct ReleaseNotesVersionBadge: View {
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview {
     ReleaseNotesVersionBadge(
-        version: ChangelogPreviewData.currentItems[0].version,
-        date: ChangelogPreviewData.currentItems[0].date,
+        version: ChangelogPreviewData.sections[0].items[0].version,
+        date: ChangelogPreviewData.sections[0].items[0].date,
         color: .indigo,
         dateFormat: .dateTime.year().month().day()
     )
@@ -50,9 +50,9 @@ struct ReleaseNotesVersionBadge: View {
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview("With subtitle") {
     ReleaseNotesVersionBadge(
-        version: ChangelogPreviewData.currentItems[0].version,
-        date: ChangelogPreviewData.currentItems[0].date,
-        subtitle: ChangelogPreviewData.currentItems[0].subtitle,
+        version: ChangelogPreviewData.sections[0].items[0].version,
+        date: ChangelogPreviewData.sections[0].items[0].date,
+        subtitle: ChangelogPreviewData.sections[0].items[0].subtitle,
         color: .indigo,
         dateFormat: .dateTime.year().month().day()
     )

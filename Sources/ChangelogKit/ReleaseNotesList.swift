@@ -7,6 +7,8 @@ struct ReleaseNotesList: View {
     let showsVersionBadges: Bool
     let hidesFirstVersionBadge: Bool
     let fillsScrollViewportPerSection: Bool
+    let sectionBoundaryTitle: String?
+    let sectionBoundaryVersion: String?
     let dateFormat: Date.FormatStyle
 
     @Environment(\.releaseNotesViewportHeight) private var releaseNotesViewportHeight
@@ -16,7 +18,7 @@ struct ReleaseNotesList: View {
     }
 
     private func shouldHideVersionBadge(section: ReleaseNotesSection, item: ReleaseNotes) -> Bool {
-        hidesFirstVersionBadge && sections.first?.id == section.id && section.items.first?.id == item.id
+        hidesFirstVersionBadge && sections.first == section && section.items.first?.version == item.version
     }
 
     private func minimumSectionHeight(for section: ReleaseNotesSection) -> CGFloat? {
@@ -35,6 +37,13 @@ struct ReleaseNotesList: View {
                     VStack(spacing: 0) {
                         ForEach(section.items) { item in
                             VStack(spacing: 0) {
+                                if let sectionBoundaryTitle,
+                                   let sectionBoundaryVersion,
+                                   item.version == sectionBoundaryVersion {
+                                    ReleaseNotesListBoundary(title: sectionBoundaryTitle)
+                                        .padding(.vertical, 32)
+                                }
+
                                 if shouldShowVersionBadges && !shouldHideVersionBadge(section: section, item: item) {
                                     ReleaseNotesVersionBadge(
                                         version: item.version,
@@ -62,15 +71,40 @@ struct ReleaseNotesList: View {
     }
 }
 
+@available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
+private struct ReleaseNotesListBoundary: View {
+    let title: String
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Capsule()
+                .fill(Color.accentColor)
+                .frame(height: 1)
+
+            Text(title)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Color.accentColor)
+                .fixedSize()
+
+            Capsule()
+                .fill(Color.accentColor)
+                .frame(height: 1)
+        }
+        .padding(.horizontal, 16)
+    }
+}
+
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview {
     ScrollView {
         ReleaseNotesList(
-            sections: ChangelogPreviewData.historySections,
+            sections: ChangelogPreviewData.sections,
             color: .indigo,
             showsVersionBadges: true,
             hidesFirstVersionBadge: false,
             fillsScrollViewportPerSection: false,
+            sectionBoundaryTitle: nil,
+            sectionBoundaryVersion: nil,
             dateFormat: .dateTime.year().month().day()
         )
         .padding(30)

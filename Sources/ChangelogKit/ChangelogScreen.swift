@@ -6,8 +6,7 @@ import UIKit
 import AppKit
 #endif
 
-/// A SwiftUI view that presents release notes and version history as a
-/// polished changelog screen.
+/// A SwiftUI view that presents grouped release notes on a single changelog screen.
 ///
 /// `ChangelogScreen` is a content view — present it with `.sheet`,
 /// `.fullScreenCover`, or embed it directly in your view hierarchy.
@@ -15,33 +14,28 @@ import AppKit
 /// ```swift
 /// .fullScreenCover(isPresented: $showChangelog) {
 ///     ChangelogScreen(
-///         currentItems: releaseNotes,
-///         historySections: history,
+///         sections: releaseSections,
+///         lastSeenVersion: "3.0.0",
 ///         onContinue: { showChangelog = false }
 ///     )
 /// }
 /// ```
 @available(iOS 15.0, watchOS 8.0, macOS 14.0, tvOS 17.0, *)
 public struct ChangelogScreen: View {
-    @State var historySheet: Bool = false
+    /// Grouped release sections shown on the changelog screen.
+    let sections: [ReleaseNotesSection]
 
-    /// Release notes shown on the main "What's New" screen.
-    let currentItems: [ReleaseNotes]
-
-    /// Grouped release history displayed in the history sheet.
-    let historySections: [ReleaseNotesSection]
+    /// Version where previously seen changes begin.
+    let lastSeenVersion: String?
 
     /// Theme color applied to version badges and accent elements.
     let color: Color
 
-    /// Background style for the changelog sheets.
+    /// Background style for the changelog screen.
     let background: ChangelogBackground
 
-    /// Customizable UI strings (button labels, headings, etc.).
+    /// Customizable UI strings.
     let strings: ChangelogStrings
-
-    /// Whether the history navigation button is shown.
-    let history: Bool
 
     /// Format used when displaying release dates.
     let dateFormat: Date.FormatStyle
@@ -49,15 +43,15 @@ public struct ChangelogScreen: View {
     /// Called when the user taps the continue/dismiss button.
     let onContinue: (() -> Void)?
 
-    /// Creates a changelog view with sectioned history.
+    /// Creates a changelog view with grouped sections.
     ///
     /// - Parameters:
     ///   - color: Theme color for badges and buttons. Defaults to `.accentColor`.
     ///   - background: Background style. Defaults to the system background color.
-    ///   - currentItems: Release notes for the current version.
-    ///   - historySections: Grouped historical releases.
+    ///   - sections: Grouped release sections ordered from newest to oldest.
+    ///   - lastSeenVersion: The first version that should appear below the
+    ///     previously-seen divider.
     ///   - strings: Override default UI copy.
-    ///   - history: Show the history navigation button.
     ///   - dateFormat: Format for release dates.
     ///   - onContinue: Callback when the user dismisses the view.
     public init(
@@ -69,80 +63,25 @@ public struct ChangelogScreen: View {
             .background(Color(NSColor.windowBackgroundColor))
             #endif
         }(),
-        currentItems: [ReleaseNotes] = [],
-        historySections: [ReleaseNotesSection] = [],
+        sections: [ReleaseNotesSection] = [],
+        lastSeenVersion: String? = nil,
         strings: ChangelogStrings = .default,
-        history: Bool = true,
         dateFormat: Date.FormatStyle = .dateTime.year().month().day(),
         onContinue: (() -> Void)? = nil
     ) {
-        self.currentItems = currentItems
-        self.historySections = historySections
+        self.sections = sections
+        self.lastSeenVersion = lastSeenVersion
         self.color = color
         self.background = background
         self.strings = strings
-        self.history = history
         self.dateFormat = dateFormat
         self.onContinue = onContinue
     }
 
-    /// Convenience initializer that wraps a flat list of history items into a
-    /// single unnamed section.
-    ///
-    /// - Parameter historyItems: A flat array of historical release notes.
-    public init(
-        color: Color = .accentColor,
-        background: ChangelogBackground = {
-            #if os(iOS) || os(tvOS) || os(watchOS) || os(visionOS)
-            .background(Color(UIColor.systemBackground))
-            #elseif os(macOS)
-            .background(Color(NSColor.windowBackgroundColor))
-            #endif
-        }(),
-        currentItems: [ReleaseNotes] = [],
-        historyItems: [ReleaseNotes] = [],
-        strings: ChangelogStrings = .default,
-        history: Bool = true,
-        dateFormat: Date.FormatStyle = .dateTime.year().month().day(),
-        onContinue: (() -> Void)? = nil
-    ) {
-        self.init(
-            color: color,
-            background: background,
-            currentItems: currentItems,
-            historySections: historyItems.isEmpty ? [] : [ReleaseNotesSection(items: historyItems)],
-            strings: strings,
-            history: history,
-            dateFormat: dateFormat,
-            onContinue: onContinue
-        )
-    }
-
-    var canShowHistory: Bool {
-        history && historySections.contains { !$0.items.isEmpty }
-    }
-
     public var body: some View {
-        sheetContent
-    }
-
-    private var sheetContent: some View {
         ZStack {
             ChangelogBackgroundLayer(background: background, color: color)
-            sheetCurrent
-                #if os(macOS)
-                .sheet(isPresented: $historySheet) {
-                    if canShowHistory {
-                        historySheetContent
-                    }
-                }
-                #else
-                .fullScreenCover(isPresented: $historySheet) {
-                    if canShowHistory {
-                        historySheetContent
-                    }
-                }
-                #endif
+            changelog
                 #if os(visionOS)
                 .padding()
                 #endif
@@ -151,56 +90,23 @@ public struct ChangelogScreen: View {
         .modifier(ChangelogPresentationModifier(background: background))
     }
 
-    private var sheetCurrent: some View {
+    private var changelog: some View {
         ReleaseNotesSheetLayout {
             headings
                 .padding(.horizontal)
         } content: {
             ReleaseNotesList(
-                sections: [ReleaseNotesSection(items: currentItems)],
-                color: color,
-                showsVersionBadges: true,
-                hidesFirstVersionBadge: true,
-                fillsScrollViewportPerSection: false,
-                dateFormat: dateFormat
-            )
-        } footer: {
-            VStack {
-                if canShowHistory {
-                    showHistoryButton
-                }
-                closeCurrentButton
-            }
-        }
-    }
-
-    private var historySheetContent: some View {
-        ZStack {
-            ChangelogBackgroundLayer(background: background, color: color)
-            sheetHistory
-                #if os(visionOS)
-                .padding()
-                #endif
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .modifier(ChangelogPresentationModifier(background: background))
-    }
-
-    private var sheetHistory: some View {
-        ReleaseNotesSheetLayout {
-            Text(strings.historyTitle)
-                .bold().font(.largeTitle)
-        } content: {
-            ReleaseNotesList(
-                sections: historySections,
+                sections: sections,
                 color: color,
                 showsVersionBadges: true,
                 hidesFirstVersionBadge: false,
-                fillsScrollViewportPerSection: true,
+                fillsScrollViewportPerSection: false,
+                sectionBoundaryTitle: lastSeenVersion == nil ? nil : strings.previouslySeenTitle,
+                sectionBoundaryVersion: lastSeenVersion,
                 dateFormat: dateFormat
             )
         } footer: {
-            closeHistoryButton
+            closeCurrentButton
         }
     }
 }
@@ -212,8 +118,8 @@ public struct ChangelogScreen: View {
     ChangelogScreen(
         color: .blue,
         background: .mesh,
-        currentItems: ChangelogPreviewData.currentItems,
-        historySections: ChangelogPreviewData.historySections
+        sections: ChangelogPreviewData.sections,
+        lastSeenVersion: ChangelogPreviewData.lastSeenVersion
     )
 }
 
@@ -228,7 +134,7 @@ public struct ChangelogScreen: View {
             .background(Color(NSColor.windowBackgroundColor))
             #endif
         }(),
-        currentItems: ChangelogPreviewData.currentItems,
-        historySections: ChangelogPreviewData.historySections
+        sections: ChangelogPreviewData.sections,
+        lastSeenVersion: ChangelogPreviewData.lastSeenVersion
     )
 }

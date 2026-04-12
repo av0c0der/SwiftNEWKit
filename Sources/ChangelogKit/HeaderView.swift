@@ -6,19 +6,15 @@ extension ChangelogScreen {
     public var headings: some View {
         VStack {
             AppIconView()
-            Text(strings.whatsNewIn)
+            Text(strings.screenTitle)
                 .bold().font(.largeTitle)
-            Text("\(strings.version) \(Bundle.versionBuild)")
-                .bold().font(.title).foregroundColor(.secondary)
         }
     }
     #elseif os(macOS) || os(visionOS) || os(tvOS)
     public var headings: some View {
         VStack {
-            Text(strings.whatsNewIn)
+            Text(strings.screenTitle)
                 .bold().font(.largeTitle)
-            Text("\(strings.version) \(Bundle.versionBuild)")
-                .bold().font(.title).foregroundColor(.secondary)
         }
     }
     #endif
@@ -28,8 +24,8 @@ extension ChangelogScreen {
 #Preview("Header") {
     ChangelogScreen(
         color: .indigo,
-        currentItems: ChangelogPreviewData.currentItems,
-        historySections: []
+        sections: ChangelogPreviewData.sections,
+        lastSeenVersion: ChangelogPreviewData.lastSeenVersion
     )
     .headings
 }

@@ -2,22 +2,6 @@ import SwiftUI
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension ChangelogScreen {
-    public var showHistoryButton: some View {
-        Button(action: {
-            historySheet = true
-        }) {
-            HStack {
-                Text(strings.showHistoryButton)
-                Image(systemName: "clock.arrow.circlepath")
-            }.font(.caption)
-        }
-        #if !os(visionOS)
-        .buttonStyle(.bordered)
-        .buttonBorderShape(.capsule)
-        .tint(.secondary)
-        #endif
-    }
-    
     public var closeCurrentButton: some View {
         Button(action: {
             onContinue?()
@@ -40,23 +24,6 @@ extension ChangelogScreen {
             #endif
         }
     }
-    
-    public var closeHistoryButton: some View {
-        Button(action: { historySheet = false }) {
-            Text(strings.returnButton)
-                .bold()
-                .font(.body)
-            .padding(.horizontal)
-            #if os(iOS)
-            .frame(width: 300, height: 50)
-            .foregroundColor(.white)
-            .background(Color.accentColor)
-            .cornerRadius(15)
-            #elseif os(macOS)
-            .frame(width: 300, height: 25)
-            #endif
-        }
-    }
 }
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
@@ -64,24 +31,10 @@ extension ChangelogScreen {
     VStack(spacing: 20) {
         ChangelogScreen(
             color: .indigo,
-            currentItems: ChangelogPreviewData.currentItems,
-            historySections: ChangelogPreviewData.historySections
-        )
-        .showHistoryButton
-
-        ChangelogScreen(
-            color: .indigo,
-            currentItems: ChangelogPreviewData.currentItems,
-            historySections: []
+            sections: ChangelogPreviewData.sections,
+            lastSeenVersion: ChangelogPreviewData.lastSeenVersion
         )
         .closeCurrentButton
-
-        ChangelogScreen(
-            color: .indigo,
-            currentItems: ChangelogPreviewData.currentItems,
-            historySections: []
-        )
-        .closeHistoryButton
     }
     .padding()
 }

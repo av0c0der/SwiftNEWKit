@@ -79,11 +79,13 @@ struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View 
             .font(.largeTitle.bold())
     } content: {
         ReleaseNotesList(
-            sections: ChangelogPreviewData.historySections,
+            sections: ChangelogPreviewData.sections,
             color: .indigo,
             showsVersionBadges: true,
             hidesFirstVersionBadge: false,
             fillsScrollViewportPerSection: false,
+            sectionBoundaryTitle: nil,
+            sectionBoundaryVersion: nil,
             dateFormat: .dateTime.year().month().day()
         )
     } footer: {
@@ -100,11 +102,13 @@ struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View 
             .font(.largeTitle.bold())
     } content: {
         ReleaseNotesList(
-            sections: ChangelogPreviewData.rtlHistorySections,
+            sections: ChangelogPreviewData.rtlSections,
             color: .indigo,
             showsVersionBadges: true,
             hidesFirstVersionBadge: false,
             fillsScrollViewportPerSection: false,
+            sectionBoundaryTitle: nil,
+            sectionBoundaryVersion: nil,
             dateFormat: .dateTime.year().month().day()
         )
     } footer: {

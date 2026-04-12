@@ -2,11 +2,14 @@ import Foundation
 
 /// A single versioned release containing one or more ``ReleaseNote`` entries.
 public struct ReleaseNotes: Codable, Hashable, Identifiable {
-    public var id = UUID()
     public var version: String
     public var date: Date?
     public var subtitle: String?
     public var notes: [ReleaseNote]
+
+    public var id: String {
+        version
+    }
 
     public init(version: String, date: Date? = nil, subtitle: String? = nil, notes: [ReleaseNote]) {
         self.version = version

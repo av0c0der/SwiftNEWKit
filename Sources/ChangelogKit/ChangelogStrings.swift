@@ -1,54 +1,34 @@
 import Foundation
 
-/// Customizable UI strings for ``ChangelogScreen`` and ``ChangelogHistoryScreen``.
+/// Customizable UI strings for ``ChangelogScreen``.
 ///
 /// Override individual labels to localize the changelog UI:
 /// ```swift
 /// ChangelogScreen(
 ///     strings: ChangelogStrings(
-///         historyTitle: "Historial",
+///         screenTitle: "Historial de cambios",
 ///         continueButton: "Continuar"
 ///     )
 /// )
 /// ```
 public struct ChangelogStrings: Hashable, Sendable {
-    /// Title shown at the top of the history sheet.
-    public var historyTitle: String
+    /// Label used for the inline boundary before previously seen sections.
+    public var previouslySeenTitle: String
 
-    /// Label for the button that opens the history sheet.
-    public var showHistoryButton: String
+    /// Title shown at the top of the changelog screen.
+    public var screenTitle: String
 
-    /// Label for the primary dismiss button on the current-version sheet.
+    /// Label for the primary dismiss button.
     public var continueButton: String
 
-    /// Label for the button that returns from history to the current-version sheet.
-    public var returnButton: String
-
-    /// Label for the dismiss button on the standalone history view.
-    public var dismissHistoryButton: String
-
-    /// Heading text shown before the app name (e.g. "What's New in").
-    public var whatsNewIn: String
-
-    /// Label preceding the version number in the header.
-    public var version: String
-
     public init(
-        historyTitle: String = "History",
-        showHistoryButton: String = "Show History",
-        continueButton: String = "Continue",
-        returnButton: String = "Return",
-        dismissHistoryButton: String = "Done",
-        whatsNewIn: String = "What's New in",
-        version: String = "Version"
+        previouslySeenTitle: String = "Previously Seen",
+        screenTitle: String = "Changelog",
+        continueButton: String = "Continue"
     ) {
-        self.historyTitle = historyTitle
-        self.showHistoryButton = showHistoryButton
+        self.previouslySeenTitle = previouslySeenTitle
+        self.screenTitle = screenTitle
         self.continueButton = continueButton
-        self.returnButton = returnButton
-        self.dismissHistoryButton = dismissHistoryButton
-        self.whatsNewIn = whatsNewIn
-        self.version = version
     }
 
     /// English defaults.

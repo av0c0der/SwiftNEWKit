@@ -2,10 +2,13 @@ import Foundation
 
 /// A named group of ``ReleaseNotes`` shown under a shared section header.
 public struct ReleaseNotesSection: Codable, Hashable, Identifiable {
-    public var id = UUID()
     public var title: String?
     public var imageName: String?
     public var items: [ReleaseNotes]
+
+    public var id: String {
+        title ?? ""
+    }
 
     public init(title: String? = nil, imageName: String? = nil, items: [ReleaseNotes]) {
         self.title = title
