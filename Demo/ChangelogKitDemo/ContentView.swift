@@ -1,24 +1,32 @@
 import SwiftUI
 import ChangelogKit
 
-private struct DemoChangelogData: Decodable {
+private struct DemoChangelogData {
     let currentItems: [ReleaseNotes]
     let historySections: [ReleaseNotesSection]
 }
 
 private enum DemoChangelogLoader {
     static let data: DemoChangelogData = load()
+    static let arabicData: DemoChangelogData = load(localization: "ar")
 
-    private static func load() -> DemoChangelogData {
-        guard let url = Bundle.main.url(forResource: "data", withExtension: "json")
+    private static func load(localization: String? = nil) -> DemoChangelogData {
+        guard let url = (
+            localization.flatMap { Bundle.main.url(forResource: "data", withExtension: "json", subdirectory: nil, localization: $0) }
+            ?? Bundle.main.url(forResource: "data", withExtension: "json")
             ?? Bundle.main.url(forResource: "data", withExtension: "json", subdirectory: nil, localization: "en")
+        )
         else {
             fatalError("Missing demo changelog JSON resource.")
         }
 
         do {
             let data = try Data(contentsOf: url)
-            return try JSONDecoder().decode(DemoChangelogData.self, from: data)
+            let historySections = try JSONDecoder().decode([ReleaseNotesSection].self, from: data)
+            return DemoChangelogData(
+                currentItems: historySections.first?.items ?? [],
+                historySections: historySections
+            )
         } catch {
             fatalError("Failed to decode demo changelog JSON: \(error)")
         }
@@ -26,6 +34,7 @@ private enum DemoChangelogLoader {
 }
 
 private let demoChangelogData = DemoChangelogLoader.data
+private let demoArabicChangelogData = DemoChangelogLoader.arabicData
 
 struct ContentView: View {
     @State private var showsReleaseNotes = false
@@ -56,4 +65,14 @@ struct ContentView: View {
         currentItems: demoChangelogData.currentItems,
         historySections: demoChangelogData.historySections
     )
+}
+
+#Preview("Embed Arabic") {
+    ChangelogScreen(
+        currentItems: demoArabicChangelogData.currentItems,
+        historySections: demoArabicChangelogData.historySections
+    )
+    .environment(\.layoutDirection, .rightToLeft)
+    .environment(\.locale, Locale(identifier: "ar"))
+    .environment(\.calendar, Calendar(identifier: .islamicCivil))
 }
