@@ -63,7 +63,7 @@ struct ReleaseNotesList: View {
                     .frame(maxWidth: .infinity, minHeight: minimumSectionHeight(for: section), alignment: .top)
                 } header: {
                     if let title = section.title, !title.isEmpty {
-                        ReleaseNotesSectionHeader(title: title, imageName: section.imageName)
+                        ReleaseNotesSectionHeader(title: title, subtitle: section.subtitle, imageName: section.imageName)
                     }
                 }
             }

@@ -5,7 +5,8 @@ enum ChangelogPreviewData {
 
     static let sections: [ReleaseNotesSection] = [
         ReleaseNotesSection(
-            title: "3.0 Kyoto",
+            title: "Kyoto",
+            subtitle: "v3",
             items: [
                 ReleaseNotes(
                     version: "3.1.2",
@@ -36,7 +37,8 @@ enum ChangelogPreviewData {
             ]
         ),
         ReleaseNotesSection(
-            title: "2.0 Lisbon",
+            title: "Lisbon",
+            subtitle: "v2",
             items: [
                 ReleaseNotes(
                     version: "2.1.0",
@@ -82,7 +84,8 @@ enum ChangelogPreviewData {
 
     static let rtlSections: [ReleaseNotesSection] = [
         ReleaseNotesSection(
-            title: "(2.0) كيوتو",
+            title: "كيوتو",
+            subtitle: "v2",
             items: [
                 ReleaseNotes(
                     version: "2.1.0",
@@ -113,7 +116,8 @@ enum ChangelogPreviewData {
             ]
         ),
         ReleaseNotesSection(
-            title: "(1.0) لشبونة",
+            title: "لشبونة",
+            subtitle: "v1",
             items: [
                 ReleaseNotes(
                     version: "1.0.0",

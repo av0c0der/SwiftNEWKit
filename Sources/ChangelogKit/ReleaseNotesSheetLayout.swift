@@ -29,12 +29,8 @@ struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View 
 
     var body: some View {
         VStack(alignment: .center) {
-            Spacer()
-
             header()
-                .padding(.bottom)
-
-            Spacer()
+                .padding(.horizontal)
 
             ScrollView(showsIndicators: false) {
                 content()

@@ -1,6 +1,7 @@
 [
   {
-    "title": "القاهرة (v3)",
+    "title": "القاهرة",
+    "subtitle": "v3",
     "imageName": "v3",
     "items": [
       {
@@ -91,7 +92,8 @@
     ]
   },
   {
-    "title": "إسطنبول (v2)",
+    "title": "إسطنبول",
+    "subtitle": "v2",
     "imageName": "v2",
     "items": [
       {
@@ -175,7 +177,8 @@
     ]
   },
   {
-    "title": "الشيشان (v1)",
+    "title": "الشيشان",
+    "subtitle": "v1",
     "imageName": "v1",
     "items": [
       {

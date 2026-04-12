@@ -4,7 +4,7 @@ import SwiftUI
 extension ChangelogScreen {
     #if os(iOS)
     public var headings: some View {
-        VStack {
+        VStack(spacing: 0) {
             AppIconView()
             Text(strings.screenTitle)
                 .bold().font(.largeTitle)

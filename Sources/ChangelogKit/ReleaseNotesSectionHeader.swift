@@ -3,6 +3,7 @@ import SwiftUI
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 struct ReleaseNotesSectionHeader: View {
     let title: String
+    let subtitle: String?
     let imageName: String?
 
     static func totalHeight(hasImage: Bool) -> CGFloat {
@@ -14,9 +15,17 @@ struct ReleaseNotesSectionHeader: View {
     }
 
     var body: some View {
-        Text(title)
-            .font(hasImage ? Font.title.weight(.bold) : Font.headline)
-            .foregroundStyle(titleColor)
+        HStack(alignment: .firstTextBaseline, spacing: 8) {
+            Text(title)
+                .font(hasImage ? Font.title.weight(.bold) : Font.headline)
+                .foregroundStyle(titleColor)
+
+            if let subtitle, !subtitle.isEmpty {
+                Text(subtitle)
+                    .font(hasImage ? Font.title.weight(.bold) : Font.headline)
+                    .foregroundStyle(subtitleColor)
+            }
+        }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 16)
             .padding(.vertical, 20)
@@ -50,10 +59,14 @@ struct ReleaseNotesSectionHeader: View {
 
         return .primary
     }
+
+    private var subtitleColor: Color {
+        return .secondary
+    }
 }
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 #Preview {
-    ReleaseNotesSectionHeader(title: "2.0", imageName: nil)
+    ReleaseNotesSectionHeader(title: "Kyoto", subtitle: "v3", imageName: nil)
         .padding()
 }
