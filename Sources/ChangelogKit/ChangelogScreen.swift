@@ -21,7 +21,7 @@ import AppKit
 ///     )
 /// }
 /// ```
-@available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
+@available(iOS 15.0, watchOS 8.0, macOS 14.0, tvOS 17.0, *)
 public struct ChangelogScreen: View {
     @State var historySheet: Bool = false
 
@@ -130,17 +130,47 @@ public struct ChangelogScreen: View {
         ZStack {
             ChangelogBackgroundLayer(background: background, color: color)
             sheetCurrent
+                #if os(macOS)
                 .sheet(isPresented: $historySheet) {
                     if canShowHistory {
                         historySheetContent
                     }
                 }
+                #else
+                .fullScreenCover(isPresented: $historySheet) {
+                    if canShowHistory {
+                        historySheetContent
+                    }
+                }
+                #endif
                 #if os(visionOS)
                 .padding()
                 #endif
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .modifier(ChangelogPresentationModifier(background: background))
+    }
+
+    private var sheetCurrent: some View {
+        ReleaseNotesSheetLayout {
+            headings
+                .padding(.horizontal)
+        } content: {
+            ReleaseNotesList(
+                sections: [ReleaseNotesSection(items: currentItems)],
+                color: color,
+                showsVersionBadges: true,
+                hidesFirstVersionBadge: true,
+                dateFormat: dateFormat
+            )
+        } footer: {
+            VStack {
+                if canShowHistory {
+                    showHistoryButton
+                }
+                closeCurrentButton
+            }
+        }
     }
 
     private var historySheetContent: some View {
@@ -153,6 +183,23 @@ public struct ChangelogScreen: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .modifier(ChangelogPresentationModifier(background: background))
+    }
+
+    private var sheetHistory: some View {
+        ReleaseNotesSheetLayout {
+            Text(strings.historyTitle)
+                .bold().font(.largeTitle)
+        } content: {
+            ReleaseNotesList(
+                sections: historySections,
+                color: color,
+                showsVersionBadges: true,
+                hidesFirstVersionBadge: false,
+                dateFormat: dateFormat
+            )
+        } footer: {
+            closeHistoryButton
+        }
     }
 }
 
