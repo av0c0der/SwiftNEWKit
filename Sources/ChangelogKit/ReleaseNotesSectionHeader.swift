@@ -5,7 +5,7 @@ struct ReleaseNotesSectionHeader: View {
     let title: String
     let subtitle: String?
     let imageName: String?
-
+    
     static func totalHeight(hasImage: Bool) -> CGFloat {
         hasImage ? 84 : 76
     }
@@ -13,30 +13,29 @@ struct ReleaseNotesSectionHeader: View {
     var hasImage: Bool {
         imageName?.isEmpty == false
     }
-
+    
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 8) {
+        HStack(alignment: .firstTextBaseline, spacing: 4) {
             Text(title)
-                .font(hasImage ? Font.title.weight(.bold) : Font.headline)
                 .foregroundStyle(titleColor)
-
+            
             if let subtitle, !subtitle.isEmpty {
                 Text(subtitle)
-                    .font(hasImage ? Font.title.weight(.bold) : Font.headline)
                     .foregroundStyle(subtitleColor)
             }
         }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 20)
-            .frame(maxWidth: .infinity, minHeight: Self.totalHeight(hasImage: hasImage) - 16, alignment: .leading)
-            .background {
-                ZStack {
+        .font(hasImage ? Font.title.weight(.bold) : Font.headline)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 20)
+        .frame(maxWidth: .infinity, minHeight: Self.totalHeight(hasImage: hasImage) - 16, alignment: .leading)
+        .background {
+            ZStack {
                 if let imageName, !imageName.isEmpty {
                     Image(imageName)
                         .resizable()
                         .scaledToFill()
-
+                    
                     LinearGradient(
                         colors: [.black.opacity(0.55), .black.opacity(0.15)],
                         startPoint: .leading,
@@ -51,16 +50,19 @@ struct ReleaseNotesSectionHeader: View {
         .clipShape(RoundedRectangle(cornerRadius: ReleaseNotesLayoutMetrics.cornerRadius, style: .continuous))
         .padding(.bottom)
     }
-
+    
     private var titleColor: Color {
-        if let imageName, !imageName.isEmpty {
+        if hasImage {
             return .white
         }
-
+        
         return .primary
     }
-
+    
     private var subtitleColor: Color {
+        if hasImage {
+            return Color.white.opacity(0.5)
+        }
         return .secondary
     }
 }
