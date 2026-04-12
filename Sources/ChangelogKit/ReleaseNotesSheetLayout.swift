@@ -1,10 +1,23 @@
 import SwiftUI
 
+private struct ReleaseNotesViewportHeightKey: EnvironmentKey {
+    static let defaultValue: CGFloat = 0
+}
+
+extension EnvironmentValues {
+    var releaseNotesViewportHeight: CGFloat {
+        get { self[ReleaseNotesViewportHeightKey.self] }
+        set { self[ReleaseNotesViewportHeightKey.self] = newValue }
+    }
+}
+
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View {
     @ViewBuilder let header: () -> Header
     @ViewBuilder let content: () -> Content
     @ViewBuilder let footer: () -> Footer
+
+    @State private var scrollViewportHeight: CGFloat = 0
 
     var body: some View {
         VStack(alignment: .center) {
@@ -17,6 +30,18 @@ struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View 
 
             ScrollView(showsIndicators: false) {
                 content()
+                    .environment(\.releaseNotesViewportHeight, scrollViewportHeight)
+            }
+            .background {
+                GeometryReader { proxy in
+                    Color.clear
+                        .onAppear {
+                            scrollViewportHeight = proxy.size.height
+                        }
+                        .onChange(of: proxy.size.height) { newValue in
+                            scrollViewportHeight = newValue
+                        }
+                }
             }
             .clipShape(RoundedRectangle(cornerRadius: ReleaseNotesLayoutMetrics.cornerRadius, style: .continuous))
             #if !os(tvOS)
@@ -50,6 +75,7 @@ struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View 
             color: .indigo,
             showsVersionBadges: true,
             hidesFirstVersionBadge: false,
+            fillsScrollViewportPerSection: false,
             dateFormat: .dateTime.year().month().day()
         )
     } footer: {
@@ -70,6 +96,7 @@ struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View 
             color: .indigo,
             showsVersionBadges: true,
             hidesFirstVersionBadge: false,
+            fillsScrollViewportPerSection: false,
             dateFormat: .dateTime.year().month().day()
         )
     } footer: {

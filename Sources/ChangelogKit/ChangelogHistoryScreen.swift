@@ -94,6 +94,7 @@ public struct ChangelogHistoryScreen: View {
                 color: color,
                 showsVersionBadges: true,
                 hidesFirstVersionBadge: false,
+                fillsScrollViewportPerSection: true,
                 dateFormat: dateFormat
             )
         } footer: {

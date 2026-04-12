@@ -161,6 +161,7 @@ public struct ChangelogScreen: View {
                 color: color,
                 showsVersionBadges: true,
                 hidesFirstVersionBadge: true,
+                fillsScrollViewportPerSection: false,
                 dateFormat: dateFormat
             )
         } footer: {
@@ -195,6 +196,7 @@ public struct ChangelogScreen: View {
                 color: color,
                 showsVersionBadges: true,
                 hidesFirstVersionBadge: false,
+                fillsScrollViewportPerSection: true,
                 dateFormat: dateFormat
             )
         } footer: {
