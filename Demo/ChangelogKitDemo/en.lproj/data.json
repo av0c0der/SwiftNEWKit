@@ -50,6 +50,19 @@
         ]
       },
       {
+        "version": "3.2.0",
+        "date": "2026-01-14T00:00:00Z",
+        "subtitle": "Feature update",
+        "notes": [
+          {
+            "icon": "text.append",
+            "iconBackground": "#5AC8FA",
+            "title": "Longer sample history",
+            "body": "Added another minor release so the demo better shows how grouped histories behave across several version steps."
+          }
+        ]
+      },
+      {
         "version": "3.1.2",
         "date": "2025-12-18T00:00:00Z",
         "subtitle": "Patch release",
@@ -108,6 +121,19 @@
         ]
       },
       {
+        "version": "2.3.0",
+        "date": "2025-08-08T00:00:00Z",
+        "subtitle": "Feature update",
+        "notes": [
+          {
+            "icon": "list.bullet.rectangle.portrait",
+            "iconBackground": "#FFCC00",
+            "title": "Denser release trail",
+            "body": "Expanded the historical data with another minor release to make scrolling behavior easier to evaluate in the demo."
+          }
+        ]
+      },
+      {
         "version": "2.2.0",
         "date": "2025-07-02T00:00:00Z",
         "subtitle": "Feature update",
@@ -152,6 +178,19 @@
     "title": "Chechnya (v1)",
     "imageName": "v1",
     "items": [
+      {
+        "version": "1.1.0",
+        "date": "2024-10-03T00:00:00Z",
+        "subtitle": "Feature update",
+        "notes": [
+          {
+            "icon": "shippingbox.circle",
+            "iconBackground": "#30D158",
+            "title": "Early packaging pass",
+            "body": "Introduced a minor follow-up release to show that even the oldest section can contain multiple historical entries."
+          }
+        ]
+      },
       {
         "version": "1.0.0",
         "date": "2024-07-14T00:00:00Z",

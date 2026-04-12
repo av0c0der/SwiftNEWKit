@@ -19,6 +19,14 @@ struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View 
 
     @State private var scrollViewportHeight: CGFloat = 0
 
+    private func updateScrollViewportHeight(_ newHeight: CGFloat) {
+        guard abs(scrollViewportHeight - newHeight) >= 0.5 else {
+            return
+        }
+
+        scrollViewportHeight = newHeight
+    }
+
     var body: some View {
         VStack(alignment: .center) {
             Spacer()
@@ -36,10 +44,10 @@ struct ReleaseNotesSheetLayout<Header: View, Content: View, Footer: View>: View 
                 GeometryReader { proxy in
                     Color.clear
                         .onAppear {
-                            scrollViewportHeight = proxy.size.height
+                            updateScrollViewportHeight(proxy.size.height)
                         }
                         .onChange(of: proxy.size.height) { newValue in
-                            scrollViewportHeight = newValue
+                            updateScrollViewportHeight(newValue)
                         }
                 }
             }

@@ -4,6 +4,10 @@ import SwiftUI
 struct ReleaseNotesSectionHeader: View {
     let title: String
     let imageName: String?
+
+    static func totalHeight(hasImage: Bool) -> CGFloat {
+        hasImage ? 84 : 76
+    }
     
     var hasImage: Bool {
         imageName?.isEmpty == false
@@ -13,11 +17,12 @@ struct ReleaseNotesSectionHeader: View {
         Text(title)
             .font(hasImage ? Font.title.weight(.bold) : Font.headline)
             .foregroundStyle(titleColor)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, 16)
-        .padding(.vertical, 20)
-        .background {
-            ZStack {
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 20)
+            .frame(maxWidth: .infinity, minHeight: Self.totalHeight(hasImage: hasImage) - 16, alignment: .leading)
+            .background {
+                ZStack {
                 if let imageName, !imageName.isEmpty {
                     Image(imageName)
                         .resizable()

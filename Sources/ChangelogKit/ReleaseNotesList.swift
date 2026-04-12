@@ -1,13 +1,5 @@
 import SwiftUI
 
-private struct ReleaseNotesSectionHeaderHeightKey: PreferenceKey {
-    static let defaultValue: [UUID: CGFloat] = [:]
-
-    static func reduce(value: inout [UUID: CGFloat], nextValue: () -> [UUID: CGFloat]) {
-        value.merge(nextValue(), uniquingKeysWith: { _, new in new })
-    }
-}
-
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 struct ReleaseNotesList: View {
     let sections: [ReleaseNotesSection]
@@ -18,7 +10,6 @@ struct ReleaseNotesList: View {
     let dateFormat: Date.FormatStyle
 
     @Environment(\.releaseNotesViewportHeight) private var releaseNotesViewportHeight
-    @State private var sectionHeaderHeights: [UUID: CGFloat] = [:]
 
     private var shouldShowVersionBadges: Bool {
         showsVersionBadges && sections.reduce(0) { $0 + $1.items.count } > 1
@@ -33,7 +24,7 @@ struct ReleaseNotesList: View {
             return nil
         }
 
-        let headerHeight = sectionHeaderHeights[section.id] ?? 0
+        let headerHeight = ReleaseNotesSectionHeader.totalHeight(hasImage: section.imageName?.isEmpty == false)
         return max(0, releaseNotesViewportHeight - headerHeight)
     }
 
@@ -64,19 +55,10 @@ struct ReleaseNotesList: View {
                 } header: {
                     if let title = section.title, !title.isEmpty {
                         ReleaseNotesSectionHeader(title: title, imageName: section.imageName)
-                            .background {
-                                GeometryReader { proxy in
-                                    Color.clear.preference(
-                                        key: ReleaseNotesSectionHeaderHeightKey.self,
-                                        value: [section.id: proxy.size.height]
-                                    )
-                                }
-                            }
                     }
                 }
             }
         }
-        .onPreferenceChange(ReleaseNotesSectionHeaderHeightKey.self) { sectionHeaderHeights = $0 }
     }
 }
 
