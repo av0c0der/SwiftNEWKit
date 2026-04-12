@@ -72,6 +72,7 @@ struct ReleaseNotes: Codable, Hashable {
 
 struct ReleaseNotesSection: Codable, Hashable {
     var title: String?
+    var imageName: String?
     var items: [ReleaseNotes]
 }
 

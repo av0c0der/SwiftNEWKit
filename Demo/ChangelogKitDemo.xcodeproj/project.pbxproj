@@ -14,6 +14,7 @@
 		3A46CBB8285444CD00BE79A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */; };
 		3AE0026A2962DD540055979A /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AE0026C2962DD540055979A /* data.json */; };
 		9A5A87052F8AAE3F00117E7D /* ChangelogKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9A5A87042F8AAE3F00117E7D /* ChangelogKit */; };
+		9A5A87082F8BB1CE00117E7D /* ChangelogKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9A5A87072F8BB1CE00117E7D /* ChangelogKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A5A87052F8AAE3F00117E7D /* ChangelogKit in Frameworks */,
+				9A5A87082F8BB1CE00117E7D /* ChangelogKit in Frameworks */,
 				3A23CAF52A3AC05C0099CC42 /* ChangelogKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +106,7 @@
 			packageProductDependencies = (
 				3A23CAF42A3AC05C0099CC42 /* ChangelogKit */,
 				9A5A87042F8AAE3F00117E7D /* ChangelogKit */,
+				9A5A87072F8BB1CE00117E7D /* ChangelogKit */,
 			);
 			productName = ChangelogKitDemo;
 			productReference = 3A46CBAC285444CC00BE79A3 /* ChangelogKitDemo.app */;
@@ -135,7 +138,7 @@
 			);
 			mainGroup = 3A46CBA3285444CC00BE79A3;
 			packageReferences = (
-				9A5A87032F8AAE3F00117E7D /* XCLocalSwiftPackageReference "../../SwiftNEWKit" */,
+				9A5A87062F8BB1CE00117E7D /* XCLocalSwiftPackageReference "../../ChangelogKit" */,
 			);
 			productRefGroup = 3A46CBAD285444CC00BE79A3 /* Products */;
 			projectDirPath = "";
@@ -393,9 +396,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		9A5A87032F8AAE3F00117E7D /* XCLocalSwiftPackageReference "../../SwiftNEWKit" */ = {
+		9A5A87062F8BB1CE00117E7D /* XCLocalSwiftPackageReference "../../ChangelogKit" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../SwiftNEWKit;
+			relativePath = ../../ChangelogKit;
 		};
 /* End XCLocalSwiftPackageReference section */
 
@@ -405,6 +408,10 @@
 			productName = ChangelogKit;
 		};
 		9A5A87042F8AAE3F00117E7D /* ChangelogKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ChangelogKit;
+		};
+		9A5A87072F8BB1CE00117E7D /* ChangelogKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ChangelogKit;
 		};

@@ -39,7 +39,7 @@ struct ReleaseNotesList: View {
                     }
                 } header: {
                     if let title = section.title, !title.isEmpty {
-                        ReleaseNotesSectionHeader(title: title)
+                        ReleaseNotesSectionHeader(title: title, imageName: section.imageName)
                     }
                 }
             }
