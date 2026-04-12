@@ -8,6 +8,9 @@ extension ChangelogScreen {
             AppIconView()
             Text(strings.screenTitle)
                 .bold().font(.largeTitle)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .allowsTightening(true)
         }
     }
     #elseif os(macOS) || os(visionOS) || os(tvOS)
@@ -15,6 +18,9 @@ extension ChangelogScreen {
         VStack {
             Text(strings.screenTitle)
                 .bold().font(.largeTitle)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .allowsTightening(true)
         }
     }
     #endif
